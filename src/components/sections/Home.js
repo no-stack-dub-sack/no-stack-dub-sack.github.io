@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   align-items: center;
-  background: url(/images/nyc.jpg) no-repeat center center;
+  background: url(/images/backgrounds/nyc.jpg) no-repeat center center;
   background-size: cover;
   display: flex;
   height: 100vh;

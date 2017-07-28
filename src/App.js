@@ -3,6 +3,7 @@ import { Router, Route } from 'react-router-dom';
 import NavBar from './components/nav/NavBar';
 import Home from './components/sections/Home';
 import About from './components/sections/About';
+import Projects from './components/sections/Projects';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
         <NavBar />
         <Home />
         <About />
+        <Projects />
       </div>
     );
   }

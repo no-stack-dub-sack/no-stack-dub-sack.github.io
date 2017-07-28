@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  background: url(/images/graff.jpg) no-repeat center center;
+  background: url(/images/backgrounds/graff.jpg) no-repeat center center;
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -95,11 +95,11 @@ const About = () => (
     <Me />
     <Logos>
       <Logo height="100px" src="images/freeCodeCamp-alternative.png" alt="free code camp logo"/>
-      <Logo src="images/react.png" alt="react logo"/>
-      <Logo src="images/three-logos.png" alt="html5, css3, and JavaScript logos"/>
-      <Logo src="images/redux.png" alt="redux logo"/>
-      <Logo src="images/sass.svg" alt="sass logo"/>
-      <Logo src="images/git.svg" alt="git logo"/>
+      <Logo src="images/logos/react.png" alt="react logo"/>
+      <Logo src="images/logos/three-logos.png" alt="html5, css3, and JavaScript logos"/>
+      <Logo src="images/logos/redux.png" alt="redux logo"/>
+      <Logo src="images/logos/sass.svg" alt="sass logo"/>
+      <Logo src="images/logos/git.svg" alt="git logo"/>
     </Logos>
   </Container>
 );
