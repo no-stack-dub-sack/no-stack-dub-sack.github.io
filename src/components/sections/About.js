@@ -75,7 +75,7 @@ const About = () => (
       <h2>{'The Journey'}</h2>
       {'My name is '}<Highlight color="black">{'Peter A. Weinberg'}</Highlight>{`, and
       I am a `}<Highlight color="red">{'self-taught'}</Highlight>{` JavaScript Developer
-      with an afinity for Open Source Software
+      with an affinity for Open Source Software
       and learning all things Web.`}
       <br /><br />
       {`About 18 months ago, I had never written a single line of code. Since that
@@ -88,13 +88,13 @@ const About = () => (
       second I have pursuing this passion. It's all about`}
       <Highlight color="#337ab7">{' the journey'}</Highlight>{`, and I can't wait to
       see where this one takes me.`}
-      <h2>{'Core Compentencies'}</h2>
+      <h2>{'Core Competencies'}</h2>
       {`JavaScript, ReactJS, Redux, SASS/LESS, CSS, HTML, Git. Understanding of
       NodeJS, ExpressJS, MongoDB, Test-Driven Development.`}
     </AboutMe>
     <Me />
     <Logos>
-      <Logo height="100px" src="images/freeCodeCamp-alternative.png" alt="free code camp logo"/>
+      <Logo height="100px" src="images/logos/freeCodeCamp-alternative.png" alt="free code camp logo"/>
       <Logo src="images/logos/react.png" alt="react logo"/>
       <Logo src="images/logos/three-logos.png" alt="html5, css3, and JavaScript logos"/>
       <Logo src="images/logos/redux.png" alt="redux logo"/>
