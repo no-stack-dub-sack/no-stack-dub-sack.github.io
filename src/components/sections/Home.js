@@ -5,6 +5,7 @@ const Container = styled.div`
   align-items: center;
   background: url(/images/backgrounds/nyc.jpg) no-repeat center center;
   background-size: cover;
+  background-attachment: fixed;
   display: flex;
   height: 100vh;
   justify-content: center;
