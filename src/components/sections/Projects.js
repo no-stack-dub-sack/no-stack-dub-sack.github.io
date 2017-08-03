@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 const Container = styled.div`
-  background: url(/images/backgrounds/graff.jpg) no-repeat center center;
+  background: url(/images/backgrounds/graff2.jpg) no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
@@ -156,13 +156,14 @@ const Overlay = CarouselContainer.extend`
     transform: translate(-50%, -50%);
     transition: opacity 500ms ease;
     width: 90%;
-    a {
-      color: #337ab7;
-      text-decoration: none;
-      font-weight: bold;
-    }
     span {
       color: #c13c1f;
+      font-weight: bold;
+    }
+    a,
+    span.blue {
+      color: #337ab7;
+      text-decoration: none;
       font-weight: bold;
     }
   }
@@ -172,7 +173,7 @@ const Overlay = CarouselContainer.extend`
       opacity: 1;
     }
     ${props => props.shadow && `
-      @media (max-width: 560px) {
+      @media (max-width: 650px) {
         box-shadow: 100px 100px 1px 1000px black;
         z-index: 2;
       }
@@ -244,11 +245,11 @@ const Dropdown = styled.div`
 const carouselData = {
   codePens: {
     images: [
-      '/images/carousel/gameOfLife.gif',
-      '/images/carousel/ticTacDough.gif',
-      '/images/carousel/flatCalc.gif',
-      '/images/carousel/phishCalc.gif',
-      '/images/carousel/simon.gif'
+      '/images/pens/gameOfLife.gif',
+      '/images/pens/ticTacDough.gif',
+      '/images/pens/flatCalc.gif',
+      '/images/pens/phishCalc.gif',
+      '/images/pens/simon.gif'
     ],
     hrefs: [
       'https://codepen.io/no_stack_dub_sack/full/YGNRxO',
@@ -271,22 +272,22 @@ const carouselData = {
       '/images/oss/FCCAN.gif',
       '/images/oss/reactChallenges.gif',
       '/images/oss/fccTests.gif',
+      '/images/oss/arrays.gif'
           ],
     hrefs: [
       'https://fcc-alumni.com',
       'http://hysterical-amusement.surge.sh/',
-      'https://codepen.io/collection/npZPmR/'
+      'https://codepen.io/collection/npZPmR/',
+      'http://beta.freecodecamp.com/en/challenges/basic-data-structures/add-items-to-an-array-with-push-and-unshift'
     ],
     captions: [
-      `<a target="_blank" rel="noopener noreferrer"
-      href="https://fcc-alumni.com">freeCodeCamp Alumni Network:</a>
-      A mentorship driven Social network built for
-      the freeCodeCamp community. By far the biggest project I've created from scratch
-      &mdash; I coded about 80-90% of this application as
-      an exercise in learning full-stack JavaScript development. Current
-      Membership: 192! You can read an article I wrote about this project for
-      freeCodeCamp's Medium publication <a href="https://medium.freecodecamp.org/the-freecodecamp-alumni-network-a-homegrown-mentorship-network-for-fcc-alumni-529e4531c34f"
-      target="_blank" rel="noopener noreferrer">here</a>.
+      `<span class='blue'>freeCodeCamp Alumni Network:</span> A mentorship driven
+      Social network built for the freeCodeCamp community. By far the biggest project
+      I've created from scratch &mdash; I coded about 80-90% of this application as
+      an exercise in learning full-stack JavaScript development. Current Membership:
+      192! You can read an article I wrote about this project for freeCodeCamp's
+      Medium publication <a href="https://goo.gl/Rw8Ndk" target="_blank" rel="
+      noopener noreferrer">here</a>.
       <br /><br />
       <span>Technologies:</span> ReactJS,
       Redux, React-Redux, React-Router, Docker, ExpressJS, NodeJS, Mongoose,
@@ -296,42 +297,63 @@ const carouselData = {
       href="https://github.com/FCC-Alumni/alumni-network">
       https://github.com/FCC-Alumni/alumni-network</a>`,
 
-      `<a target="_blank" rel="noopener noreferrer" href="http://hysterical-amusement.surge.sh/">
-      Interactive ReactJS Challenges:</a> This project was developed for <a
-      href="http://beta.freecodecamp.com/en/challenges/react/introduction-to-the-react-challenges"
-      target="_blank" rel="noopener noreferrer">beta.freeCodeCamp.com.</a> freeCodeCamp has been working on
-      a major curriculum expansion for several months, and these challenges will eventually
-      be an integral part of the Frontend Libraries Certificate section. I contributed several
-      challenges to this project, including designing and writing the challenges, developing
-      the code, and writing the unit tests.
+      `<span class='blue'>Interactive ReactJS Challenges:</span> This project was
+      developed for <a href="http://beta.freecodecamp.com/en/challenges/react/
+      introduction-to-the-react-challenges" target="_blank" rel="noopener noreferrer">
+      beta.freeCodeCamp.com.</a> freeCodeCamp has been working on a major curriculum
+      expansion for several months, and these challenges will eventually be an integral
+      part of the Frontend Libraries Certificate section. I contributed several challenges
+      to this project, including designing and writing the challenges, developing the
+      code, and writing the unit tests.
       <br /><br />
       The testing framework, primarily developed by <a href="http://sean-smith.me/"
-      target="_blank" rel="noopener noreferrer">Sean Smith</a>, tests React code
-      in the browser using AirBnB's Enzyme library, and includes live rendering/output
+      target="_blank" rel="noopener noreferrer">Sean Smith</a>, tests React code in
+      the browser using AirBnB's Enzyme library, and includes live rendering/output
       when code is changed.
       <br /><br />
       <span>Technologies:</span> ReactJS, Enzyme, React-CodeMirror, & more.
       <br /><br />
       Check out the repo at <a href="https://github.com/bonham000/fcc-react-tests-module/"
-      target="_blank" rel="noopener noreferrer">https://github.com/bonham000/fcc-react-tests-module/</a>`,
+      target="_blank" rel="noopener noreferrer">https://github.com/bonham000/fcc-react-
+      tests-module/</a>`,
 
-      `<a target="_blank" rel="noopener noreferrer" href="https://codepen.io/collection/npZPmR/">
-      Frontend Test Suites:</a> This project was also developed for the freeCodeCamp curriculum expansion.
-      As more and more students join and utilize freeCodeCamp’s learning platform, we realized we needed
-      a standardized way to measure completion of required projects. A test suite was created for each &mdash;
-      as students code, they pass/fail tests and receive feedback and helpful errors along the way!
+      `<span class='blue'>Frontend Test Suites:</span> This project was also developed
+      for the freeCodeCamp curriculum expansion. As more and more students join and
+      utilize freeCodeCamp’s learning platform, we realized we needed a standardized
+      way to measure completion of required projects. A test suite was created for
+      each &mdash; as students code, they pass/fail tests and receive feedback and
+      helpful errors along the way!
       <br /><br />
-      The testing framework was developed by myself and another freeCodeCamp contributor, while I
-      developed most of the individual test suites. We bundled the code using Webpack, and serve
-      it over a CDN created from our repo. Student’s can then include the test framework in
-      their projects (in a CodePen or locally) via a script tag.
+      The testing framework was developed by myself and another freeCodeCamp contributor,
+      while I developed most of the individual test suites. We bundled the code using
+      Webpack, and serve it over a CDN created from our repo. Student’s can then include
+      the test framework in their projects (in a CodePen or locally) via a script tag.
       <br /><br />
       <span>Technologies:</span> JavaScript, Mocha, Chai, jQuery, Selenium, Webpack
       <br /><br />
       Check out the repo at <a href="https://github.com/freeCodeCamp/testable-projects-fcc"
-      target="_blank" rel="noopener noreferrer">https://github.com/freeCodeCamp/testable-projects-fcc</a>`
+      target="_blank" rel="noopener noreferrer">https://github.com/freeCodeCamp/testable-
+      projects-fcc</a>`,
+
+      `<span class="blue">FCC Basic Data Structure (Array) Challenges:</span> As a
+      freeCodeCamp Core Team member, I have made many contributions, mostly in the
+      form of adding new projects to the freeCodeCamp ecosystem, like the <a href=
+      "https://github.com/freeCodeCamp/testable-projects-fcc" target="_blank" rel=
+      "noopener noreferrer">Frontend Test Suite</a> and the <a href=
+      "https://github.com/bonham000/fcc-react-tests-module/" target="_blank" rel=
+      "noopener noreferrer">new React Curriculum</a>. However, in addition to several
+      challenge fixes, UI tweaks, and updates that are now in production, I also
+      contributed a series of challenges to the yet-to-be-released beta curriculum
+      for the Basic Data Structures section. While another contributor covered Objects,
+      I designed, coded and implemented a series of 11 challenges, meant to familiarize
+      students with the basic concepts surrounding JavaScript Arrays and their common methods.
+      <br /><br />
+      <span>Technologies:</span> JavaScript, JSON, NodeJS, Chai
+      <br /><br />
+      Check out the freeCodeCamp repo here: <a target="_blank" rel="noopener noreferrer"
+      href="https://github.com/freeCodeCamp/freeCodeCamp/">https://github.com/freeCodeCamp/freeCodeCamp/</a>`
     ],
-    indicators: ['_0', '_1', '_2']
+    indicators: ['_0', '_1', '_2', '_3']
   }
 }
 

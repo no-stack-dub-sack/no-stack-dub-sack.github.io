@@ -28,7 +28,7 @@ const TagLine = styled.div`
   color: white;
   font-family: Montserrat;
   font-size: 24px;
-  margin: auto;
+  margin: 30px auto 10px auto;
   max-width: 600px;
   text-align: center;
   text-shadow: 4px 5px 10px black;
