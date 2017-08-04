@@ -31,6 +31,7 @@ const TagLine = styled.div`
   margin: 30px auto 10px auto;
   max-width: 600px;
   text-align: center;
+  line-height: 26px;
   text-shadow: 4px 5px 10px black;
 `;
 
@@ -46,10 +47,14 @@ const HR = styled.hr`
 
 const ButtonContainer = styled.div`
   margin: 20px auto;
-  width: 184px;
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  // outline: 1px dotted white;
 `;
 
-const Link = styled.a`
+export const Link = styled.a`
   color: white;
   display: inline-block;
   text-decoration: none;
@@ -58,22 +63,9 @@ const Link = styled.a`
   }
 `;
 
-const IconWrap = styled.div`
-  align-items: center;
-  background: #337ab7;
-  border-radius: 8px;
-  border: 1px solid #2e6da4;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  height: 40px;
-  justify-content: center;
-  margin: 3px;
-  position: relative;
-  text-decoration: none;
+export const Grow = styled.div`
   transform: scale(1);
-  transition: 200ms ease-in transform, 200ms linear z-index;
-  width: 40px;
+  transition: 200ms ease-in transform, 200ms linear z-index, 300ms ease box-shadow;
   z-index: 1;
   &:hover {
     box-shadow: 1px 1px 30px 1px black;
@@ -83,12 +75,42 @@ const IconWrap = styled.div`
   }
 `;
 
+export const IconWrap = Grow.extend`
+  align-items: center;
+  // background: #337ab7;
+  border-radius: 8px;
+  // border: 1px solid #2e6da4;
+  border: 3px solid white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 55px;
+  justify-content: center;
+  margin: 3px;
+  position: relative;
+  width: 55px;
+  text-shadow: 2px 2px 10px black;
+  box-shadow: 1px 1px 30px 1px black;
+  &:hover {
+    box-shadow: 5px 5px 60px 1px black;
+  }
+`;
+
 const Button = ({ href, icon }) => (
   <Link href={href} rel="noopener noreferrer" target="_blank">
-    <IconWrap>
-      <i className={`fa fa-${icon}`} aria-hidden="true" />
+    <IconWrap className="shadowHack">
+      <i className={`fa fa-${icon} fa-2x`} aria-hidden="true" />
     </IconWrap>
   </Link>
+);
+
+export const Buttons = () => (
+  <ButtonContainer>
+    <Button href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
+    <Button href="https://github.com/no-stack-dub-sack" icon="github" />
+    <Button href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
+    <Button href="https://codepen.io/no_stack_dub_sack/" icon="codepen" />
+  </ButtonContainer>
 );
 
 const Home = () => (
@@ -101,12 +123,7 @@ const Home = () => (
         Greater NYC Based Web Developer & Constant Student of Javascript
       </TagLine>
       <HR />
-      <ButtonContainer>
-        <Button href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
-        <Button href="https://github.com/no-stack-dub-sack" icon="github" />
-        <Button href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
-        <Button href="https://codepen.io/no_stack_dub_sack/" icon="codepen" />
-      </ButtonContainer>
+      <Buttons />
     </InnerContainer>
   </Container>
 );

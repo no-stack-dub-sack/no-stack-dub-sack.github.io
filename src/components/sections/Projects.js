@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 const Container = styled.div`
-  background: url(/images/backgrounds/graff2.jpg) no-repeat center center;
+  background: url(/images/backgrounds/graff.jpg) no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
