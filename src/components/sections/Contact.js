@@ -10,7 +10,7 @@ import {
 } from './Home';
 
 const Container = styled.div`
-  background: url(/images/backgrounds/desk.jpg) no-repeat center center;
+  background: url(/images/backgrounds/mailbox.jpg) no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
