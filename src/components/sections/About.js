@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  background: url(/images/backgrounds/graff.jpg) no-repeat center center;
+  background: url(/images/backgrounds/nyc3.jpg) no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;

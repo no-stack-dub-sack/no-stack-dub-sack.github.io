@@ -5,7 +5,7 @@ import { CSSTransitionGroup } from 'react-transition-group';
 const Container = styled.div`
   background: url(/images/backgrounds/graff.jpg) no-repeat center center;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   height: 100vh;
   overflow-x: hidden;
   position: relative;
@@ -127,11 +127,6 @@ const Button = styled.i`
   @media (max-width: 560px) {
     width: 250px;
   }
-`;
-
-const Image = styled.img`
-  height: 300px;
-  width: auto;
 `;
 
 const ThumbnailBox = CarouselContainer.extend`
@@ -363,32 +358,39 @@ class Projects extends React.Component {
     this.state = {
       currentImage: '/images/oss/FCCAN.gif',
       direction: 'initialize',
-      content: 'openSource'
+      category: 'openSource'
     }
+  }
+
+  componentWillMount() {
+    const fiftyFifty = Math.random() > .5;
+    const firstContent = fiftyFifty ? 'openSource' : 'codePens';
+    const firstImage = fiftyFifty ? '/images/oss/FCCAN.gif' : '/images/pens/gameOfLife.gif';
+    this.setState({ category: firstContent, currentImage: firstImage });
   }
 
   carouselRight = () => {
     this.setState({ direction: 'fromLeft' }, () => {
-      const { content } = this.state;
-      let nextImage = carouselData[content].images.indexOf(this.state.currentImage) + 1;
-      if (nextImage === carouselData[content].images.length) {
+      const { category } = this.state;
+      let nextImage = carouselData[category].images.indexOf(this.state.currentImage) + 1;
+      if (nextImage === carouselData[category].images.length) {
         nextImage = 0;
       }
       this.setState({
-        currentImage: carouselData[content].images[nextImage]
+        currentImage: carouselData[category].images[nextImage]
       });
     });
   }
 
   carouselLeft = () => {
     this.setState({ direction: 'fromRight' }, () => {
-      const { content } = this.state;
-      let nextImage = carouselData[content].images.indexOf(this.state.currentImage) - 1;
+      const { category } = this.state;
+      let nextImage = carouselData[category].images.indexOf(this.state.currentImage) - 1;
       if (nextImage < 0) {
-        nextImage = carouselData[content].images.length - 1;
+        nextImage = carouselData[category].images.length - 1;
       }
       this.setState({
-        currentImage: carouselData[content].images[nextImage]
+        currentImage: carouselData[category].images[nextImage]
       });
     });
   }
@@ -396,21 +398,21 @@ class Projects extends React.Component {
   goToImage = (e) => {
     const index = e.target.id.slice(1);
     this.setState({
-      currentImage: carouselData[this.state.content].images[index],
+      currentImage: carouselData[this.state.category].images[index],
       direction: index > 2 ? 'fromLeft' : 'fromRight'
     });
   }
 
   changeContent = () => {
-    if (this.state.content === 'codePens') {
+    if (this.state.category === 'codePens') {
       this.setState({
-        content: 'openSource',
+        category: 'openSource',
         currentImage: carouselData.openSource.images[0],
         direction: 'fromRight'
       });
     } else {
       this.setState({
-        content: 'codePens',
+        category: 'codePens',
         currentImage: carouselData.codePens.images[0],
         direction: 'fromRight'
       });
@@ -418,11 +420,10 @@ class Projects extends React.Component {
   }
 
   render() {
-    const { currentImage, content } = this.state;
-    const item = <Image src={currentImage} key={currentImage} />;
-    const _indicators = carouselData[content].indicators.map((el, idx) => (
+    const { currentImage, category } = this.state;
+    const _indicators = carouselData[category].indicators.map((el, idx) => (
       <Indicator
-        className={carouselData[content]
+        className={carouselData[category]
           .images.indexOf(currentImage) === idx ? 'active' : ''}
         id={el}
         key={el}
@@ -432,9 +433,9 @@ class Projects extends React.Component {
     return (
       <Container id="projects">
         <Dropdown>
-          <Select onChange={this.changeContent} name="select">
-            <option value="Open Source">Open Source</option>
-            <option value="Code Pens">Code Pens</option>
+          <Select value={this.state.category} onChange={this.changeContent}>
+            <option value="openSource">Open Source</option>
+            <option value="codePens">Code Pens</option>
           </Select>
         </Dropdown>
         <CSSTransitionGroup
@@ -445,18 +446,18 @@ class Projects extends React.Component {
           transitionAppearTimeout={600}>
           <Carousel key={currentImage}>
             <a
-              href={carouselData[content]
-                .hrefs[carouselData[content]
+              href={carouselData[category]
+                .hrefs[carouselData[category]
                 .images.indexOf(currentImage)]}
               rel="noopener noreferrer"
               target="_blank">
               <ThumbnailBox img={currentImage}>
-                <Overlay shadow={this.state.content === 'openSource' && true}>
+                <Overlay shadow={this.state.category === 'openSource' && true}>
                   <span
                     className="inner-description"
                     dangerouslySetInnerHTML={{
-                      __html: carouselData[content]
-                        .captions[carouselData[content]
+                      __html: carouselData[category]
+                        .captions[carouselData[category]
                         .images.indexOf(currentImage)]
                     }} />
                   </Overlay>

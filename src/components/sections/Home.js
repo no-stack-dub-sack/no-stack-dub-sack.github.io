@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   align-items: center;
-  background: url(/images/backgrounds/nyc.jpg) no-repeat center center;
+  background: url(/images/backgrounds/nyc2.jpeg) no-repeat center center;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   display: flex;
   height: 100vh;
   justify-content: center;

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink as Link } from 'react-router-dom';
 
 const NavWrapper = styled.header`
   background: #e0e0eb;
@@ -43,7 +42,7 @@ const NavLink = styled.a`
   font-family: Montserrat;
   opacity: 1;
   text-align: right;
-  transition: 500ms opacity ease-in-out;
+  transition: 500ms opacity ease-in-out, 800ms background ease;
   &:hover {
     color: white;
     text-shadow: 1px 1px 100px black;
