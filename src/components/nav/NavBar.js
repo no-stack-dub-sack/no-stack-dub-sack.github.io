@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+require('smoothscroll-polyfill').polyfill()
 
 const NavWrapper = styled.header`
   background: #e0e0eb;
@@ -36,13 +37,14 @@ const NavLeft = styled.div`
   float: left;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled.div`
   ${navStyles()}
-  display: ${props => props.display};
+  cursor: pointer;
+  display: ${props => props.cssDisplayValue};
   font-family: Montserrat;
   opacity: 1;
   text-align: right;
-  transition: 500ms opacity ease-in-out, 800ms background ease;
+  transition: 500ms opacity ease-in-out, 200ms background ease;
   &:hover {
     color: white;
     text-shadow: 1px 1px 100px black;
@@ -98,12 +100,48 @@ const Dropdown = styled.div`
   }
 `;
 
-const NavItems = ({ display, isStatic, hide, pos }) => (
+const NavItems = ({ display, isStatic, hide, pos, handleClick }) => (
   <div>
-    <NavLink isActive={pos === 'home'} display={display} isHidden={hide} isStatic={isStatic} href="#home">Home</NavLink>
-    <NavLink isActive={pos === 'about'} display={display} isHidden={hide} isStatic={isStatic} href="#about">About</NavLink>
-    <NavLink isActive={pos === 'portfolio'} display={display} isHidden={hide} isStatic={isStatic} href="#projects">Portfolio</NavLink>
-    <NavLink isActive={pos === 'contact'} display={display} isHidden={hide} isStatic={isStatic} href="#contact">Contact</NavLink>
+    <NavLink
+      isActive={pos === 'home'}
+      cssDisplayValue={display}
+      isHidden={hide}
+      isStatic={isStatic}
+      id="__home"
+      onClick={handleClick}
+      >
+      Home
+    </NavLink>
+    <NavLink
+      isActive={pos === 'about'}
+      cssDisplayValue={display}
+      isHidden={hide}
+      isStatic={isStatic}
+      id="__about"
+      onClick={handleClick}
+      >
+      About
+    </NavLink>
+    <NavLink
+      isActive={pos === 'portfolio'}
+      cssDisplayValue={display}
+      isHidden={hide}
+      isStatic={isStatic}
+      id="__projects"
+      onClick={handleClick}
+      >
+      Portfolio
+    </NavLink>
+    <NavLink
+      isActive={pos === 'contact'}
+      cssDisplayValue={display}
+      isHidden={hide}
+      isStatic={isStatic}
+      id="__contact"
+      onClick={handleClick}
+      >
+      Contact
+    </NavLink>
   </div>
 );
 
@@ -125,29 +163,28 @@ class NavBar extends React.Component {
   }
 
   handleScroll = (e) => {
-    var last_known_scroll_position = 0;
     var viewHeight = window.innerHeight;
     var ticking = false;
     var position;
+    var scrollPosition = window.scrollY;
+
     var threshold = (viewHeight/3);
     var window1 = (viewHeight) - threshold;
     var window2 = (viewHeight*2) - threshold;
     var window3 = (viewHeight*3) - threshold;
 
-    last_known_scroll_position = window.scrollY;
-
     if (!ticking) {
       window.requestAnimationFrame(function() {
-        if (last_known_scroll_position < window1) {
+        if (scrollPosition < window1) {
           position = 'home';
         }
-        if (last_known_scroll_position >= window1 && last_known_scroll_position < window2) {
+        if (scrollPosition >= window1 && scrollPosition < window2) {
           position = 'about';
         }
-        if (last_known_scroll_position >= window2 && last_known_scroll_position < window3) {
+        if (scrollPosition >= window2 && scrollPosition < window3) {
           position = 'portfolio';
         }
-        if (last_known_scroll_position >= window3) {
+        if (scrollPosition >= window3) {
           position = 'contact';
         }
         if (this.state.position !== position) {
@@ -157,6 +194,13 @@ class NavBar extends React.Component {
       }.bind(this));
     }
     ticking = true;
+  }
+
+  smoothScrollToSection = ({ target: { id } }) => {
+    const hook = id.slice(2);
+    document.querySelector(`#${hook}`).scrollIntoView({
+      behavior: 'smooth'
+    });
   }
 
   toggleDropdown = () => {
@@ -172,11 +216,24 @@ class NavBar extends React.Component {
           Peter A. Weinberg
         </NavLeft>
         <NavRight>
-          <NavItems pos={this.state.position} display='inline-block' isStatic={true} />
-          <Hamburger onClick={this.toggleDropdown} className="fa fa-bars fa-2x"/>
+          <NavItems
+            display='inline-block'
+            handleClick={this.smoothScrollToSection}
+            isStatic={true}
+            pos={this.state.position}
+            />
+          <Hamburger
+            onClick={this.toggleDropdown}
+            className="fa fa-bars fa-2x"
+            />
         </NavRight>
         <Dropdown isOpen={this.state.isDropdownOpen}>
-          <NavItems pos={this.state.position} hide={!this.state.isDropdownOpen} display="block" />
+          <NavItems
+            display="block"
+            handleClick={this.smoothScrollToSection}
+            hide={!this.state.isDropdownOpen}
+            pos={this.state.position}
+            />
         </Dropdown>
       </NavWrapper>
     );
