@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ReactInterval from 'react-interval';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 const Container = styled.div`
@@ -10,12 +11,10 @@ const Container = styled.div`
   overflow-x: hidden;
   position: relative;
 
-  .initialize-appear,
   .fromRight-enter {
     transform: translateX(-200%);
   }
 
-  .initialize-appear.initialize-appear-active,
   .fromRight-enter.fromRight-enter-active {
     transform: translateX(0);
     transition: transform 600ms ease-in;
@@ -30,10 +29,12 @@ const Container = styled.div`
     transition: transform 600ms ease-in;
   }
 
+  .initialize-appear,
   .fromLeft-enter {
     transform: translateX(200%);
   }
 
+  .initialize-appear.initialize-appear-active,
   .fromLeft-enter.fromLeft-enter-active {
     transform: translateX(0);
     transition: transform 600ms ease-in;
@@ -124,6 +125,9 @@ const Button = styled.i`
   display: inline-block;
   text-align: center;
   width: 400px;
+  color: white;
+  text-shadow: 1px 1px 10px black;
+  // font-size: 30px;
   @media (max-width: 560px) {
     width: 250px;
   }
@@ -177,8 +181,9 @@ const Overlay = CarouselContainer.extend`
 `;
 
 const Indicator = styled.div`
-  background: black;
+  background: white;
   border-radius: 100%;
+  box-shadow: -1px -1px 10px black;
   cursor: pointer;
   display: inline-block;
   height: 10px;
@@ -186,7 +191,7 @@ const Indicator = styled.div`
   transition: background 400ms;
   width: 10px;
   &.active {
-    background: #c4c6c0;
+    background: rgb(241, 235, 161);
   }
 `;
 
@@ -243,24 +248,32 @@ const carouselData = {
       '/images/pens/gameOfLife.gif',
       '/images/pens/ticTacDough.gif',
       '/images/pens/flatCalc.gif',
+      '/images/pens/simon.gif',
       '/images/pens/phishCalc.gif',
-      '/images/pens/simon.gif'
+      '/images/pens/markdown.gif',
+      '/images/pens/recipes.gif',
+      '/images/pens/drums.gif',
     ],
     hrefs: [
-      'https://codepen.io/no_stack_dub_sack/full/YGNRxO',
       'https://codepen.io/no_stack_dub_sack/full/bBpWvv',
+      'https://codepen.io/no_stack_dub_sack/full/YGNRxO',
       'https://codepen.io/no_stack_dub_sack/full/jrxpKP',
       'https://codepen.io/no_stack_dub_sack/full/KrbYaa',
-      'https://codepen.io/no_stack_dub_sack/full/KrbYaa'
+      'https://codepen.io/no_stack_dub_sack/full/KrbYaa',
+      'https://codepen.io/no_stack_dub_sack/full/JbPZvm/',
+      'https://codepen.io/no_stack_dub_sack/full/GNEJWx/',
+      'https://codepen.io/no_stack_dub_sack/full/woQzNW/'
     ],
     captions: [
-      'Conway\'s Game of Life: ReactJS, Sass',
+      'Conway\'s Game of Life: ReactJS, Sass<br />(Designed for <a target="_blank" rel="noopener noreferrer" href="http://beta.freecodecamp.com/en/challenges/front-end-frameworks-projects/build-a-javascript-calculator">this</a> freeCodeCamp challenge)',
       'Unbeatable Tic-Tac-Dough game: jQuery, Pug, LESS',
-      'Flat Design Calculator (Designed for <a href="#">this</a> freeCodeCamp challenge): ReactJS, Sass',
+      'Flat Design Calculator: ReactJS, Sass<br />(Designed for <a target="_blank" rel="noopener noreferrer" href="http://beta.freecodecamp.com/en/challenges/coding-interview-take-home-projects/build-the-game-of-life">this</a> freeCodeCamp challenge)',
+      'Simon game: ReactJS, Sass',
       'Skeuomorphic Calculator: jQuery, Less, HTML',
-      'Simon game: ReactJS, Sass'
-    ],
-    indicators: ['_0', '_1', '_2', '_3', '_4']
+      'Markdown Previewer and Editing Toolbar: ReactJS, MarkedJS, Sass<br />(Designed for <a target="_blank" rel="noopener noreferrer" href="http://beta.freecodecamp.com/en/challenges/front-end-frameworks-projects/build-a-markdown-previewer">this</a> freeCodeCamp challenge)',
+      'Simple CRUD Recipe App: ReactJS, Sass<br />(Designed for <a target="_blank" rel="noopener noreferrer" href="http://beta.freecodecamp.com/en/challenges/coding-interview-take-home-projects/build-a-recipe-box">this</a> freeCodeCamp challenge)',
+      'Basic Drum Machine: ReactJS, Sass<br />(Designed for <a target="_blank" rel="noopener noreferrer" href="http://beta.freecodecamp.com/en/challenges/front-end-frameworks-projects/build-a-drum-machine">this</a> freeCodeCamp challenge)',
+    ]
   },
   openSource: {
     images: [
@@ -347,8 +360,7 @@ const carouselData = {
       <br /><br />
       Check out the freeCodeCamp repo here: <a target="_blank" rel="noopener noreferrer"
       href="https://github.com/freeCodeCamp/freeCodeCamp/">https://github.com/freeCodeCamp/freeCodeCamp/</a>`
-    ],
-    indicators: ['_0', '_1', '_2', '_3']
+    ]
   }
 }
 
@@ -358,15 +370,17 @@ class Projects extends React.Component {
     this.state = {
       currentImage: '/images/oss/FCCAN.gif',
       direction: 'initialize',
-      category: 'openSource'
+      category: 'openSource',
+      intervalId: setInterval(() => this.carouselRight(), 5000)
     }
   }
 
-  componentWillMount() {
-    const fiftyFifty = Math.random() > .5;
-    const firstContent = fiftyFifty ? 'openSource' : 'codePens';
-    const firstImage = fiftyFifty ? '/images/oss/FCCAN.gif' : '/images/pens/gameOfLife.gif';
-    this.setState({ category: firstContent, currentImage: firstImage });
+  handleMouseEnter = () => {
+    this.state.intervalId && clearInterval(this.state.intervalId);
+  }
+
+  handleMouseLeave = () => {
+    this.setState({ intervalId: setInterval(() => this.carouselRight(), 5000) });
   }
 
   carouselRight = () => {
@@ -421,11 +435,11 @@ class Projects extends React.Component {
 
   render() {
     const { currentImage, category } = this.state;
-    const _indicators = carouselData[category].indicators.map((el, idx) => (
+    const _indicators = carouselData[category].images.map((el, idx) => (
       <Indicator
         className={carouselData[category]
           .images.indexOf(currentImage) === idx ? 'active' : ''}
-        id={el}
+        id={`_${idx}`}
         key={el}
         onClick={this.goToImage}
         />
@@ -444,13 +458,18 @@ class Projects extends React.Component {
           transitionLeaveTimeout={600}
           transitionAppear={true}
           transitionAppearTimeout={600}>
-          <Carousel key={currentImage}>
+          <Carousel
+            key={currentImage}
+            onMouseOut={this.handleLeave}
+            onMouseOver={this.handleEnter}
+            >
             <a
               href={carouselData[category]
                 .hrefs[carouselData[category]
                 .images.indexOf(currentImage)]}
               rel="noopener noreferrer"
-              target="_blank">
+              target="_blank"
+              >
               <ThumbnailBox img={currentImage}>
                 <Overlay shadow={this.state.category === 'openSource' && true}>
                   <span
@@ -465,7 +484,10 @@ class Projects extends React.Component {
             </a>
           </Carousel>
         </CSSTransitionGroup>
-        <ButtonContainer>
+        <ButtonContainer
+          onMouseOut={this.handleLeave}
+          onMouseOver={this.handleEnter}
+          >
           <Button
             className="fa fa-chevron-left fa-2x"
             onClick={this.carouselLeft}

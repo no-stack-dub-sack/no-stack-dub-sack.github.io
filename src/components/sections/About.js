@@ -34,9 +34,9 @@ const Highlight = styled.span`
 `;
 
 const Me = styled.img`
-  background-image: url(/images/me.JPG);
+  background-image: url(/images/pete2.jpg);
   background-size: cover;
-  background-position: right center;
+  background-position: left center;
   background-clip: padding-box;
   height: 300px;
   width: 300px;

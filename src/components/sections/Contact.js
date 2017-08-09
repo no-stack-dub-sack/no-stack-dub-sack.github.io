@@ -244,7 +244,7 @@ class ContactMe extends React.Component {
             <Button label="LinkedIn" href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
             <Button label="GitHub" href="https://github.com/no-stack-dub-sack" icon="github" />
             <Button label="freeCodeCamp" href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
-            <Button label="CodePen" href="https://codepen.io/no_stack_dub_sack/" icon="codepen" />
+            <Button label="CodePen" href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
           </ButtonContainer>
         </RightColumn>
 

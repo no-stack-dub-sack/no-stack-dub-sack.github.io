@@ -109,7 +109,7 @@ export const Buttons = () => (
     <Button href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
     <Button href="https://github.com/no-stack-dub-sack" icon="github" />
     <Button href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
-    <Button href="https://codepen.io/no_stack_dub_sack/" icon="codepen" />
+    <Button href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
   </ButtonContainer>
 );
 
