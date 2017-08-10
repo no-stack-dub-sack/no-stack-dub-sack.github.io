@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReactInterval from 'react-interval';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 const Container = styled.div`
-  background: url(/images/backgrounds/graff.jpg) no-repeat center center;
+  background: url(http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320461/graff_h23ddb.jpg) no-repeat center center;
   background-size: cover;
   background-attachment: scroll;
   height: 100vh;
@@ -50,7 +49,7 @@ const Container = styled.div`
   }
 `;
 
-const CarouselContainer = styled.div`
+const Carousel = styled.div`
   height: 450px;
   transition: height 200ms, width 200ms;
   width: 800px;
@@ -72,7 +71,7 @@ const CarouselContainer = styled.div`
   }
 `;
 
-const Carousel = CarouselContainer.extend`
+const CarouselContainer = Carousel.extend`
   left: 50%;
   margin-left: -400px;
   margin-top: -225px;
@@ -100,15 +99,22 @@ const Carousel = CarouselContainer.extend`
 const ButtonContainer = styled.div`
   bottom: 15%;
   left: 50%;
-  margin-left: -400px;
+  margin-left: -250px;
   position: absolute;
   transition: bottom 200ms;
-  width: 800px;
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   @media (max-width: 850px) {
     bottom: 22%;
+    margin-left: -200px;
+    width: 400px;
   }
   @media (max-width: 650px) {
     bottom: 25%;
+    margin-left: -150px;
+    width: 300px;
   }
   @media (max-width: 560px) {
     bottom: 30%;
@@ -121,25 +127,31 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.i`
+  color: white;
   cursor: pointer;
   display: inline-block;
+  font-weight: bold;
   text-align: center;
-  width: 400px;
-  color: white;
-  text-shadow: 1px 1px 10px black;
-  // font-size: 30px;
+  text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  -webkit-text-stroke: 1px black;
+  font-size: 33px;
   @media (max-width: 560px) {
     width: 250px;
   }
 `;
 
-const ThumbnailBox = CarouselContainer.extend`
+const ThumbnailBox = Carousel.extend`
   background: url(${props => props.img}) no-repeat center center;
   background-size: cover;
   border-radius: 20px;
 `;
 
-const Overlay = CarouselContainer.extend`
+const Overlay = Carousel.extend`
   background: rgba(0, 0, 0, 0.01);
   border-radius: inherit;
   position: relative;
@@ -182,16 +194,17 @@ const Overlay = CarouselContainer.extend`
 
 const Indicator = styled.div`
   background: white;
+  border: 1px solid black;
   border-radius: 100%;
-  box-shadow: -1px -1px 10px black;
+  box-shadow: 2px 1px black;
   cursor: pointer;
   display: inline-block;
-  height: 10px;
+  height: 12px;
   margin: 5px;
-  transition: background 400ms;
-  width: 10px;
+  transition: background 500ms;
+  width: 12px;
   &.active {
-    background: rgb(241, 235, 161);
+    background: #fbc689;
   }
 `;
 
@@ -220,6 +233,7 @@ const IndicatorContainer = styled.div`
 `;
 
 const Select = styled.select`
+  box-shadow: 4px 4px black;
   font-size: 15px;
   margin: 40px !important;
 `;
@@ -227,7 +241,7 @@ const Select = styled.select`
 const Dropdown = styled.div`
   margin: 80px auto 0 auto;
   transition: margin 200ms;
-  width: 200px;
+  width: 290px;
   @media (max-width: 850px) {
     margin: 135px auto 0 auto;
   }
@@ -235,24 +249,21 @@ const Dropdown = styled.div`
     margin: 160px auto 0 auto;
   }
   @media (max-width: 560px) {
-    margin: 200px auto 0 auto;
-  }
-  @media (max-width: 430px) {
-    margin: 230px auto 0 auto;
+    margin: 50px auto 0 auto;
   }
 `;
 
 const carouselData = {
   codePens: {
     images: [
-      '/images/pens/gameOfLife.gif',
-      '/images/pens/ticTacDough.gif',
-      '/images/pens/flatCalc.gif',
-      '/images/pens/simon.gif',
-      '/images/pens/phishCalc.gif',
-      '/images/pens/markdown.gif',
-      '/images/pens/recipes.gif',
-      '/images/pens/drums.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/gameOfLife_kgdytl.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320401/ticTacDough_hhndio.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/flatCalc_vnjjnd.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320401/simon_mcvkb1.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/phishCalc_ofdobg.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320403/markdown_tyuddu.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/recipes_hrctci.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/drums_g1wh4y.gif',
     ],
     hrefs: [
       'https://codepen.io/no_stack_dub_sack/full/bBpWvv',
@@ -277,10 +288,10 @@ const carouselData = {
   },
   openSource: {
     images: [
-      '/images/oss/FCCAN.gif',
-      '/images/oss/reactChallenges.gif',
-      '/images/oss/fccTests.gif',
-      '/images/oss/arrays.gif'
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320451/FCCAN_ykaig8.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320449/reactChallenges_pnwxun.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320449/fccTests_arjgge.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320450/arrays_f0oxgc.gif'
           ],
     hrefs: [
       'https://fcc-alumni.com',
@@ -413,7 +424,7 @@ class Projects extends React.Component {
     const index = e.target.id.slice(1);
     this.setState({
       currentImage: carouselData[this.state.category].images[index],
-      direction: index > 2 ? 'fromLeft' : 'fromRight'
+      direction: 'fromLeft'
     });
   }
 
@@ -422,13 +433,13 @@ class Projects extends React.Component {
       this.setState({
         category: 'openSource',
         currentImage: carouselData.openSource.images[0],
-        direction: 'fromRight'
+        direction: 'fromLeft'
       });
     } else {
       this.setState({
         category: 'codePens',
         currentImage: carouselData.codePens.images[0],
-        direction: 'fromRight'
+        direction: 'fromLeft'
       });
     }
   }
@@ -449,7 +460,7 @@ class Projects extends React.Component {
         <Dropdown>
           <Select value={this.state.category} onChange={this.changeContent}>
             <option value="openSource">Open Source</option>
-            <option value="codePens">Code Pens</option>
+            <option value="codePens">Games and Demonstrations</option>
           </Select>
         </Dropdown>
         <CSSTransitionGroup
@@ -458,10 +469,10 @@ class Projects extends React.Component {
           transitionLeaveTimeout={600}
           transitionAppear={true}
           transitionAppearTimeout={600}>
-          <Carousel
+          <CarouselContainer
             key={currentImage}
-            onMouseOut={this.handleLeave}
-            onMouseOver={this.handleEnter}
+            onMouseOut={this.handleMouseLeave}
+            onMouseOver={this.handleMouseEnter}
             >
             <a
               href={carouselData[category]
@@ -482,11 +493,11 @@ class Projects extends React.Component {
                   </Overlay>
                 </ThumbnailBox>
             </a>
-          </Carousel>
+          </CarouselContainer>
         </CSSTransitionGroup>
         <ButtonContainer
-          onMouseOut={this.handleLeave}
-          onMouseOver={this.handleEnter}
+          onMouseOut={this.handleMouseLeave}
+          onMouseOver={this.handleMouseEnter}
           >
           <Button
             className="fa fa-chevron-left fa-2x"
@@ -497,7 +508,10 @@ class Projects extends React.Component {
             onClick={this.carouselRight}
             />
         </ButtonContainer>
-        <IndicatorContainer>
+        <IndicatorContainer
+          onMouseOut={this.handleMouseLeave}
+          onMouseOver={this.handleMouseEnter}
+          >
           {_indicators}
         </IndicatorContainer>
       </Container>

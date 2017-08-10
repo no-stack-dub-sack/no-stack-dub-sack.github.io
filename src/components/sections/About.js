@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  background: url(/images/backgrounds/nyc3.jpg) no-repeat center center;
+  background: url(http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320463/nyc3_y7m7aa.jpg) no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
@@ -34,9 +34,9 @@ const Highlight = styled.span`
 `;
 
 const Me = styled.img`
-  background-image: url(/images/pete2.jpg);
+  background-image: url(http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320512/pete4_l5xqdn.jpg);
   background-size: cover;
-  background-position: left center;
+  background-position: center center;
   background-clip: padding-box;
   height: 300px;
   width: 300px;
@@ -95,12 +95,12 @@ const About = () => (
     </AboutMe>
     <Me />
     <Logos>
-      <Logo height="100px" src="images/logos/freeCodeCamp-alternative.png" alt="free code camp logo"/>
-      <Logo src="images/logos/react.png" alt="react logo"/>
-      <Logo src="images/logos/three-logos.png" alt="html5, css3, and JavaScript logos"/>
-      <Logo src="images/logos/redux.png" alt="redux logo"/>
-      <Logo src="images/logos/sass.svg" alt="sass logo"/>
-      <Logo src="images/logos/git.svg" alt="git logo"/>
+      <Logo height="100px" src="http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502332171/freeCodeCamp-alternative_o8b0xu.png" alt="free code camp logo"/>
+      <Logo src="http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502332172/react_j93sss.png" alt="react logo"/>
+      <Logo src="http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502332172/three-logos_tt8ovy.png" alt="html5, css3, and JavaScript logos"/>
+      <Logo src="http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502332171/redux_pnndqj.png" alt="redux logo"/>
+      <Logo src="http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502332172/sass_ul7oxq.svg" alt="sass logo"/>
+      <Logo src="http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502332171/git_nwdm2n.svg" alt="git logo"/>
     </Logos>
   </Container>
 );

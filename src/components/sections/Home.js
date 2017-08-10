@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   align-items: center;
-  background: url(/images/backgrounds/nyc2.jpeg) no-repeat center center;
+  background: url(http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320463/nyc2_radjzg.jpg) no-repeat center center;
   background-size: cover;
   background-attachment: scroll;
   display: flex;
@@ -22,6 +22,10 @@ const Name = styled.div`
   opacity: 0.7;
   text-align: center;
   text-shadow: 4px 5px 10px black;
+  @media (max-width: 513px) {
+    margin-bottom: -20px;
+    line-height: 63px;
+  }
 `;
 
 const TagLine = styled.div`
@@ -120,7 +124,7 @@ const Home = () => (
         PETER A WEINBERG
       </Name>
       <TagLine>
-        Greater NYC Based Web Developer & Constant Student of Javascript
+        Greater NYC Based Web Developer & Open Source Contributor
       </TagLine>
       <HR />
       <Buttons />

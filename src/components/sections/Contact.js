@@ -2,59 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 import Validator from 'validator';
 import { isEmpty } from 'lodash';
+import { Popup as popUp } from 'semantic-ui-react';
 import axios from 'axios';
 import {
-  Buttons as SmallerButtons,
   Link as InlineLink,
   IconWrap as iconWrap,
 } from './Home';
 
 const Container = styled.div`
-  background: url(/images/backgrounds/mailbox.jpg) no-repeat center center;
+  background: url(http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320461/mailbox_fybcfr.jpg) no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
-`;
-
-const Column = styled.div`
-  height: 100vh;
-  width: 49vw;
-  display: inline-block;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  @media (max-width: 750px) {
-    width: 100vw;
-    height: 100vh;
-    &.right {
-      display: none;
-    }
-  }
-`;
-
-const LeftColumn = Column.extend`
-  float: left;
-`;
-
-const RightColumn = Column.extend`
-  float: right;
-`;
-
-const SmallButtonContainer = styled.div`
-  display: none;
-  margin-top: 40px;
-  @media (max-width: 750px) {
-    display: block;
-  }
 `;
 
 const ButtonContainer = styled.div`
-  width: 200px;
+  @media (max-width: 1090px) {
+    width: 290px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+  }
 `;
 
 const Link = InlineLink.extend`
   display: inline-block;
+  margin: 6px;
 `;
 
 const IconWrap = iconWrap.extend`
@@ -73,24 +50,46 @@ const IconWrap = iconWrap.extend`
     margin: 10px;
   }
   &:hover {
-    transform: scale(1.4);
+    transform: scale(1.3);
     box-shadow: 5px 5px 60px 1px black;
+  }
+  @media (max-width: 1090px) {
+    display: inline-block;
   }
 `;
 
 const Form = styled.form`
-  width: 60%;
   z-index: 1;
-  input,
-  textarea,
-  button {
-    box-shadow: 5px 5px 60px 1px black !important;
-  }
+  margin: 10px;
 `;
 
 const Error = styled.div`
   margin-top: 5px !important;
   background: transparent !important;
+`;
+
+const FormTrigger = IconWrap.extend`
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  margin: 6px;
+  &:hover {
+    transform: none;
+  }
+  @media (max-width: 1090px) {
+    width: 150px;
+  }
+`;
+
+const Popup = styled(popUp)`
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: none !important;
+  box-shadow: 5px 5px 20px 1px black !important;
+  transition: all 500ms !important;
+  width: 500px !important;
+  @media (max-width: 650px) {
+    width: 250px !important;
+  }
 `;
 
 const Button = ({ href, icon, label }) => (
@@ -102,7 +101,7 @@ const Button = ({ href, icon, label }) => (
   </Link>
 );
 
-const FormField = ({ label, name, type, placeholder, errors, onChange }) => (
+const FormField = ({ label, name, type, placeholder, errors, onChange, value }) => (
   <div className={`required field ${errors[name] ? 'error' : ''}`}>
     <label>{label}</label>
     <input
@@ -110,6 +109,7 @@ const FormField = ({ label, name, type, placeholder, errors, onChange }) => (
       onChange={onChange}
       placeholder={placeholder}
       type={type}
+      value={value}
     />
   { errors[name] && typeof errors[name] === 'string' &&
     <Error className="ui pointing red basic label">{errors[name]}</Error> }
@@ -195,62 +195,131 @@ class ContactMe extends React.Component {
 
   render() {
     const { errors } = this.state;
+    const form = (
+      <Form className="ui inverted form">
+        <FormField
+          errors={errors}
+          label="Name"
+          name="name"
+          onChange={this.handleChange}
+          value={this.state.name}
+          placeholder="Name"
+          type="text"
+        />
+        <FormField
+          errors={errors}
+          label="Email"
+          name="email"
+          onChange={this.handleChange}
+          value={this.state.email}
+          placeholder="Email"
+          type="email"
+        />
+        <FormField
+          errors={errors}
+          label="Subject"
+          name="_subject"
+          onChange={this.handleChange}
+          value={this.state._subject}
+          placeholder="Name"
+          type="text"
+        />
+        <div className="field">
+          <label>Message</label>
+          <textarea
+            onChange={this.handleChange}
+            name="message"
+            rows="5"
+            placeholder="Say some cool stuff here..."
+            value={this.state.message}
+          />
+        </div>
+        <button onClick={this.handleSubmit} className="ui button">Submit!</button>
+      { typeof this.state.submitted === 'boolean' &&
+        <label className={`ui ${this.state.submitted ? 'green' : 'red'} basic label`}>
+          {this.state.submitMessage}
+        </label> }
+      </Form>
+    );
     return (
       <Container id="contact">
-        <LeftColumn className="left">
-          <Form className="ui inverted form">
-            <FormField
-              errors={errors}
-              label="Name"
-              name="name"
-              onChange={this.handleChange}
-              placeholder="Name"
-              type="text"
-            />
-            <FormField
-              errors={errors}
-              label="Email"
-              name="email"
-              onChange={this.handleChange}
-              placeholder="Email"
-              type="email"
-            />
-            <FormField
-              errors={errors}
-              label="Subject"
-              name="_subject"
-              onChange={this.handleChange}
-              placeholder="Name"
-              type="text"
-            />
-            <div className="field">
-              <label>Message</label>
-              <textarea onChange={this.handleChange} name="message" rows="5" placeholder="Say some cool stuff here..."></textarea>
-            </div>
-            <button onClick={this.handleSubmit} className="ui button">Submit!</button>
-
-          { typeof this.state.submitted === 'boolean' &&
-            <label className={`ui ${this.state.submitted ? 'green' : 'red'} basic label`}>
-              {this.state.submitMessage}
-            </label> }
-          </Form>
-          <SmallButtonContainer>
-            <SmallerButtons />
-          </SmallButtonContainer>
-        </LeftColumn>
-
-        <RightColumn className="right">
           <ButtonContainer>
             <Button label="LinkedIn" href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
             <Button label="GitHub" href="https://github.com/no-stack-dub-sack" icon="github" />
             <Button label="freeCodeCamp" href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
             <Button label="CodePen" href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
+            <Popup
+              basic
+              content={form}
+              flowing
+              hoverable
+              onMount={this.handlePopupClose}
+              position="left center"
+              trigger={
+                <FormTrigger>
+                  <i className="fa fa-envelope fa-2x" />
+                  <span>Email</span>
+                </FormTrigger>}>
+            </Popup>
           </ButtonContainer>
-        </RightColumn>
-
       </Container>
     );
   }
 }
 
 export default ContactMe;
+
+
+// <Container id="contact">
+//   <LeftColumn className="left">
+    // <Form className="ui inverted form">
+    //   <FormField
+    //     errors={errors}
+    //     label="Name"
+    //     name="name"
+    //     onChange={this.handleChange}
+    //     placeholder="Name"
+    //     type="text"
+    //   />
+    //   <FormField
+    //     errors={errors}
+    //     label="Email"
+    //     name="email"
+    //     onChange={this.handleChange}
+    //     placeholder="Email"
+    //     type="email"
+    //   />
+    //   <FormField
+    //     errors={errors}
+    //     label="Subject"
+    //     name="_subject"
+    //     onChange={this.handleChange}
+    //     placeholder="Name"
+    //     type="text"
+    //   />
+    //   <div className="field">
+    //     <label>Message</label>
+    //     <textarea onChange={this.handleChange} name="message" rows="5" placeholder="Say some cool stuff here..."></textarea>
+    //   </div>
+    //   <button onClick={this.handleSubmit} className="ui button">Submit!</button>
+    //
+    // { typeof this.state.submitted === 'boolean' &&
+    //   <label className={`ui ${this.state.submitted ? 'green' : 'red'} basic label`}>
+    //     {this.state.submitMessage}
+    //   </label> }
+    // </Form>
+//     <SmallButtonContainer>
+//       <SmallerButtons />
+//     </SmallButtonContainer>
+//   </LeftColumn>
+//
+//   <RightColumn className="right">
+//     <ButtonContainer>
+//       <Button label="LinkedIn" href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
+//       <Button label="GitHub" href="https://github.com/no-stack-dub-sack" icon="github" />
+//       <Button label="freeCodeCamp" href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
+//       <Button label="CodePen" href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
+//     </ButtonContainer>
+//   </RightColumn>
+//
+// </Container>
