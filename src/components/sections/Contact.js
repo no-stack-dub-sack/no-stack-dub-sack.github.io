@@ -137,7 +137,6 @@ class ContactMe extends React.Component {
   }
 
   handleSubmit = (e) => {
-    let form = document.querySelector('form');
     e.preventDefault();
     if (this.isValid()) {
       axios.post('https://formspree.io/pweinberg633@gmail.com', {
@@ -151,9 +150,12 @@ class ContactMe extends React.Component {
         console.log('form sucessfully submitted');
         this.setState({
           submitted: true,
-          submitMessage: 'Thanks! I\'ll get back to you as soon as I can.'
+          submitMessage: 'Thanks! I\'ll get back to you as soon as I can.',
+          name: '',
+          email: '',
+          _subject: '',
+          message: ''
         });
-        form.reset();
       }).catch(err => {
         console.error('There was an error submitting this message: ' + err);
         this.setState({

@@ -379,7 +379,7 @@ class Projects extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentImage: '/images/oss/FCCAN.gif',
+      currentImage: 'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320451/FCCAN_ykaig8.gif',
       direction: 'initialize',
       category: 'openSource',
       intervalId: setInterval(() => this.carouselRight(), 5000)
