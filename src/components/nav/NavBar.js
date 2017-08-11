@@ -7,8 +7,9 @@ const NavWrapper = styled.header`
   height: 60px;
   opacity: 0.9;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   z-index: 4;
+  padding-right: 15px;
 `;
 
 const NavRight = styled.div`
@@ -54,7 +55,7 @@ const NavLink = styled.div`
       display: none;
     }
   `:`
-    padding: 10px 15px 10px;
+    padding: 20px 32px 20px;
     &:last-of-type {
       padding-bottom: 20px;
     }
