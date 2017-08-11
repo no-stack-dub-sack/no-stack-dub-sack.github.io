@@ -26,6 +26,9 @@ const Name = styled.div`
     margin-bottom: -20px;
     line-height: 63px;
   }
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 `;
 
 const TagLine = styled.div`
@@ -37,6 +40,9 @@ const TagLine = styled.div`
   text-align: center;
   line-height: 26px;
   text-shadow: 4px 5px 10px black;
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 `;
 
 const HR = styled.hr`
@@ -51,11 +57,14 @@ const HR = styled.hr`
 
 const ButtonContainer = styled.div`
   margin: 20px auto;
-  width: 400px;
+  max-width: 400px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   // outline: 1px dotted white;
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 `;
 
 export const Link = styled.a`

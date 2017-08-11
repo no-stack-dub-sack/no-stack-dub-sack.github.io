@@ -32,6 +32,10 @@ const ButtonContainer = styled.div`
 const Link = InlineLink.extend`
   display: inline-block;
   margin: 6px;
+  width: auto;
+  @media (max-width: 1090px) {
+    display: table;
+  }
 `;
 
 const IconWrap = iconWrap.extend`
@@ -52,9 +56,6 @@ const IconWrap = iconWrap.extend`
   &:hover {
     transform: scale(1.3);
     box-shadow: 5px 5px 60px 1px black;
-  }
-  @media (max-width: 1090px) {
-    display: inline-block;
   }
 `;
 
@@ -88,7 +89,7 @@ const Popup = styled(popUp)`
   transition: all 500ms !important;
   width: 500px !important;
   @media (max-width: 650px) {
-    width: 250px !important;
+    width: 200px !important;
   }
 `;
 
@@ -270,58 +271,3 @@ class ContactMe extends React.Component {
 }
 
 export default ContactMe;
-
-
-// <Container id="contact">
-//   <LeftColumn className="left">
-    // <Form className="ui inverted form">
-    //   <FormField
-    //     errors={errors}
-    //     label="Name"
-    //     name="name"
-    //     onChange={this.handleChange}
-    //     placeholder="Name"
-    //     type="text"
-    //   />
-    //   <FormField
-    //     errors={errors}
-    //     label="Email"
-    //     name="email"
-    //     onChange={this.handleChange}
-    //     placeholder="Email"
-    //     type="email"
-    //   />
-    //   <FormField
-    //     errors={errors}
-    //     label="Subject"
-    //     name="_subject"
-    //     onChange={this.handleChange}
-    //     placeholder="Name"
-    //     type="text"
-    //   />
-    //   <div className="field">
-    //     <label>Message</label>
-    //     <textarea onChange={this.handleChange} name="message" rows="5" placeholder="Say some cool stuff here..."></textarea>
-    //   </div>
-    //   <button onClick={this.handleSubmit} className="ui button">Submit!</button>
-    //
-    // { typeof this.state.submitted === 'boolean' &&
-    //   <label className={`ui ${this.state.submitted ? 'green' : 'red'} basic label`}>
-    //     {this.state.submitMessage}
-    //   </label> }
-    // </Form>
-//     <SmallButtonContainer>
-//       <SmallerButtons />
-//     </SmallButtonContainer>
-//   </LeftColumn>
-//
-//   <RightColumn className="right">
-//     <ButtonContainer>
-//       <Button label="LinkedIn" href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
-//       <Button label="GitHub" href="https://github.com/no-stack-dub-sack" icon="github" />
-//       <Button label="freeCodeCamp" href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
-//       <Button label="CodePen" href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
-//     </ButtonContainer>
-//   </RightColumn>
-//
-// </Container>

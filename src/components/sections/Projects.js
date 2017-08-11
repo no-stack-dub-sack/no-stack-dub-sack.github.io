@@ -119,11 +119,11 @@ const ButtonContainer = styled.div`
   }
   @media (max-width: 560px) {
     bottom: 30%;
-    margin-left: -250px;
-    width: 500px;
   }
   @media (max-width: 430px) {
-    bottom: 27%;
+    bottom: 10%;
+    margin-left: -50%;
+    width: 100%;
   }
 `;
 
@@ -141,8 +141,48 @@ const Button = styled.i`
     1px 1px 0 #000;
   -webkit-text-stroke: 1px black;
   font-size: 33px;
+  @media (max-width: 430px) {
+    margin: 0 40px 0 40px;
+  }
+`;
+
+const Indicator = styled.div`
+  background: white;
+  border: 1px solid black;
+  border-radius: 100%;
+  box-shadow: 2px 1px black;
+  cursor: pointer;
+  display: inline-block;
+  height: 12px;
+  margin: 5px;
+  transition: background 500ms;
+  width: 12px;
+  &.active {
+    background: #fbc689;
+  }
+`;
+
+const IndicatorContainer = styled.div`
+  bottom: 15.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  left: 50%;
+  margin-left: -100px;
+  position: absolute;
+  width: 200px;
+  transition: bottom 200ms;
+  @media (max-width: 850px) {
+    bottom: 22.5%;
+  }
+  @media (max-width: 650px) {
+    bottom: 25.5%;
+  }
   @media (max-width: 560px) {
-    width: 250px;
+    bottom: 30.5%;
+  }
+  @media (max-width: 430px) {
+    bottom: 10.5%;
   }
 `;
 
@@ -193,46 +233,6 @@ const Overlay = Carousel.extend`
   }
 `;
 
-const Indicator = styled.div`
-  background: white;
-  border: 1px solid black;
-  border-radius: 100%;
-  box-shadow: 2px 1px black;
-  cursor: pointer;
-  display: inline-block;
-  height: 12px;
-  margin: 5px;
-  transition: background 500ms;
-  width: 12px;
-  &.active {
-    background: #fbc689;
-  }
-`;
-
-const IndicatorContainer = styled.div`
-  bottom: 15%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  left: 50%;
-  margin-left: -100px;
-  position: absolute;
-  width: 200px;
-  transition: bottom 200ms;
-  @media (max-width: 850px) {
-    bottom: 22%;
-  }
-  @media (max-width: 650px) {
-    bottom: 25%;
-  }
-  @media (max-width: 560px) {
-    bottom: 30%;
-  }
-  @media (max-width: 430px) {
-    bottom: 27%;
-  }
-`;
-
 const Select = styled.select`
   box-shadow: 4px 4px black;
   font-size: 15px;
@@ -250,7 +250,7 @@ const Dropdown = styled.div`
     margin: 160px auto 0 auto;
   }
   @media (max-width: 560px) {
-    margin: 50px auto 0 auto;
+    margin: 10px auto 0 auto;
   }
 `;
 
