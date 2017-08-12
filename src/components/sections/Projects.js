@@ -118,10 +118,10 @@ const ButtonContainer = styled.div`
     width: 300px;
   }
   @media (max-width: 560px) {
-    bottom: 30%;
+    bottom: 27%;
   }
   @media (max-width: 430px) {
-    bottom: 10%;
+    bottom: 15%;
     margin-left: -50%;
     width: 100%;
   }
@@ -155,10 +155,14 @@ const Indicator = styled.div`
   display: inline-block;
   height: 12px;
   margin: 5px;
-  transition: background 500ms;
+  transition: all 400ms;
   width: 12px;
   &.active {
     background: #fbc689;
+    transform: scale(1.3);
+  }
+  &:hover {
+    transform: scale(1.3);
   }
 `;
 
@@ -172,6 +176,7 @@ const IndicatorContainer = styled.div`
   position: absolute;
   width: 200px;
   transition: bottom 200ms;
+  z-index: 0;
   @media (max-width: 850px) {
     bottom: 22.5%;
   }
@@ -179,10 +184,10 @@ const IndicatorContainer = styled.div`
     bottom: 25.5%;
   }
   @media (max-width: 560px) {
-    bottom: 30.5%;
+    bottom: 27.5%;
   }
   @media (max-width: 430px) {
-    bottom: 10.5%;
+    bottom: 15.5%;
   }
 `;
 
@@ -197,6 +202,7 @@ const Overlay = Carousel.extend`
   border-radius: inherit;
   position: relative;
   transition: background 500ms ease;
+  z-index: 1;
   .inner-description {
     color: white;
     font-family: Montserrat;
@@ -219,17 +225,17 @@ const Overlay = Carousel.extend`
       font-weight: bold;
     }
   }
+  @media (max-width: 650px) {
+    font-size: 11.5px;
+  }
   &:hover {
     background: rgba(0, 0, 0, 0.8);
     .inner-description {
       opacity: 1;
     }
-    ${props => props.shadow && `
-      @media (max-width: 650px) {
-        box-shadow: 100px 100px 1px 1000px black;
-        z-index: 2;
-      }
-    `}
+  }
+  @media (max-width: 560px) {
+    display: none;
   }
 `;
 
@@ -250,7 +256,52 @@ const Dropdown = styled.div`
     margin: 160px auto 0 auto;
   }
   @media (max-width: 560px) {
-    margin: 10px auto 0 auto;
+    margin: 100px auto 0 auto;
+  }
+`;
+
+const InfoContainer = CarouselContainer.extend`
+  position: relative;
+  height: 65px !important;
+  // outline: 1px dotted white;
+  z-index: 1;
+  @media (min-width: 561px) {
+    display: none;
+  }
+`;
+
+const InfoTrigger = styled.i`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-shadow:
+    2px 2px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  -webkit-text-stroke: 1px black;
+  &:hover + div {
+    display: block;
+  }
+`;
+
+const Info = styled.div`
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  color: white;
+  display: none;
+  height: 150px;
+  overflow-y: scroll;
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  word-wrap: break-word;
+  top: 50px;
+  &:hover {
+    display: block;
   }
 `;
 
@@ -325,14 +376,16 @@ class Projects extends React.Component {
 
   render() {
     const { currentImage, category } = this.state;
-    const _indicators = carouselData[category].images.map((el, idx) => (
+    const currCategoryObj = carouselData[category];
+    const currentIndex = currCategoryObj.images.indexOf(currentImage);
+    const indicators = currCategoryObj.images.map((el, idx) => (
       <Indicator
-        className={carouselData[category]
+        className={currCategoryObj
           .images.indexOf(currentImage) === idx ? 'active' : ''}
         id={`_${idx}`}
         key={el}
         onClick={this.goToImage}
-        />
+      />
     ));
     return (
       <Container id="projects">
@@ -354,9 +407,7 @@ class Projects extends React.Component {
             onMouseOver={this.handleMouseEnter}
             >
             <a
-              href={carouselData[category]
-                .hrefs[carouselData[category]
-                .images.indexOf(currentImage)]}
+              href={currCategoryObj.hrefs[currentIndex]}
               rel="noopener noreferrer"
               target="_blank"
               >
@@ -365,33 +416,41 @@ class Projects extends React.Component {
                   <span
                     className="inner-description"
                     dangerouslySetInnerHTML={{
-                      __html: carouselData[category]
-                        .captions[carouselData[category]
-                        .images.indexOf(currentImage)]
-                    }} />
-                  </Overlay>
-                </ThumbnailBox>
+                      __html: currCategoryObj.captions[currentIndex]
+                    }}
+                  />
+                </Overlay>
+              </ThumbnailBox>
             </a>
           </CarouselContainer>
         </CSSTransitionGroup>
+        <InfoContainer>
+          <InfoTrigger className="big info circle icon" />
+          <Info
+            className="inner-description"
+            dangerouslySetInnerHTML={{
+              __html: currCategoryObj.captions[currentIndex]
+            }}
+          />
+        </InfoContainer>
         <ButtonContainer
           onMouseOut={this.handleMouseLeave}
           onMouseOver={this.handleMouseEnter}
           >
           <Button
-            className="fa fa-chevron-left fa-2x"
+            className="big chevron left icon"
             onClick={this.carouselLeft}
-            />
+          />
           <Button
-            className="fa fa-chevron-right fa-2x"
+            className="big chevron right icon"
             onClick={this.carouselRight}
-            />
+          />
         </ButtonContainer>
         <IndicatorContainer
           onMouseOut={this.handleMouseLeave}
           onMouseOver={this.handleMouseEnter}
           >
-          {_indicators}
+          { indicators }
         </IndicatorContainer>
       </Container>
     );

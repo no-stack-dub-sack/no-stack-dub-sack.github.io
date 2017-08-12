@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Validator from 'validator';
 import { isEmpty } from 'lodash';
-import { Popup as popUp } from 'semantic-ui-react';
 import axios from 'axios';
 import {
   Link as InlineLink,
@@ -116,7 +115,10 @@ const Popup = styled.div`
   }
   @media (max-width: 750px) {
     width: 300px;
-    transform: translate(-30%, -50%);
+    transform: translate(-30%, -60%);
+  }
+  @media (max-width: 650px) {
+
   }
 `;
 
@@ -287,24 +289,3 @@ class ContactMe extends React.Component {
 }
 
 export default ContactMe;
-
-// <Container id="contact">
-//     <ButtonContainer>
-//       <Button label="LinkedIn" href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
-//       <Button label="GitHub" href="https://github.com/no-stack-dub-sack" icon="github" />
-//       <Button label="freeCodeCamp" href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
-//       <Button label="CodePen" href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
-//       <Popup
-//         basic
-//         content={form}
-//         flowing
-//         hoverable
-//         position="left center"
-//         trigger={
-//           <PopupTrigger>
-//             <i className="fa fa-envelope fa-2x" />
-//             <span>Email</span>
-//           </PopupTrigger>}>
-//       </Popup>
-//     </ButtonContainer>
-// </Container>

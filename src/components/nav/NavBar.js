@@ -168,8 +168,7 @@ class NavBar extends React.Component {
 
   handleScroll = (e) => {
     var viewHeight = window.innerHeight;
-    var ticking = false;
-    var position;
+    var ticking = false, position;
     var scrollPosition = window.scrollY;
 
     var threshold = (viewHeight/3);
@@ -202,7 +201,7 @@ class NavBar extends React.Component {
 
   handleResize = (e) => {
     var resizeTimeout;
-    if ( !resizeTimeout ) {
+    if (!resizeTimeout) {
       resizeTimeout = setTimeout(function() {
         resizeTimeout = null;
         var viewWidth = window.innerWidth;

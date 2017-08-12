@@ -9,14 +9,14 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// if (module.hot) {
-//   module.hot.accept('./App', () => {
-//     const NextApp = require('./App').default;
-//     ReactDOM.render(
-//       <NextApp />,
-//       document.getElementById('root')
-//     );
-//   });
-// }
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default;
+    ReactDOM.render(
+      <NextApp />,
+      document.getElementById('root')
+    );
+  });
+}
 
 registerServiceWorker();

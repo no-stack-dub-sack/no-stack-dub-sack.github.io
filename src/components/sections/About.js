@@ -90,8 +90,8 @@ const About = () => (
       <Highlight color="#337ab7">{' the journey'}</Highlight>{`, and I can't wait to
       see where this one takes me.`}
       <h2>{'Core Competencies'}</h2>
-      {`JavaScript, ReactJS, Redux, SASS/LESS, CSS, HTML, Git. Understanding of
-      NodeJS, ExpressJS, MongoDB, Test-Driven Development.`}
+      {`JavaScript, ReactJS, Redux, Sass/Less, CSS3, HTML5, Git. Understanding of
+      jQuery, NodeJS, ExpressJS, MongoDB.`}
     </AboutMe>
     <Me />
     <Logos>
