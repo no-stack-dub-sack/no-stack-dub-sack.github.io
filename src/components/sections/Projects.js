@@ -93,7 +93,7 @@ const CarouselContainer = Carousel.extend`
   }
   @media (max-width: 430px) {
     margin-left: -150px;
-    margin-top: -84.375px;
+    margin-top: -130px;
   }
 `;
 
@@ -121,7 +121,7 @@ const ButtonContainer = styled.div`
     bottom: 27%;
   }
   @media (max-width: 430px) {
-    bottom: 15%;
+    bottom: 23%;
     margin-left: -50%;
     width: 100%;
   }
@@ -187,7 +187,7 @@ const IndicatorContainer = styled.div`
     bottom: 27.5%;
   }
   @media (max-width: 430px) {
-    bottom: 15.5%;
+    bottom: 23.5%;
   }
 `;
 
@@ -293,13 +293,25 @@ const Info = styled.div`
   border-radius: 5px;
   color: white;
   display: none;
-  height: 150px;
+  font-family: Montserrat;
+  max-height: 150px;
   overflow-y: scroll;
   padding: 20px;
   position: absolute;
+  text-align: center;
   width: 100%;
   word-wrap: break-word;
   top: 50px;
+  span {
+    color: #c13c1f;
+    font-weight: bold;
+  }
+  a,
+  span.blue {
+    color: #337ab7;
+    text-decoration: none;
+    font-weight: bold;
+  }
   &:hover {
     display: block;
   }
