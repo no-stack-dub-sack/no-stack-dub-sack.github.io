@@ -18,6 +18,7 @@ const Container = styled.div`
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 `;
 
 const ButtonContainer = styled.div`
@@ -60,8 +61,10 @@ const IconWrap = iconWrap.extend`
 `;
 
 const Form = styled.form`
-  z-index: 1;
-  margin: 10px;
+  margin: 15px;
+  label {
+    font-family: monospace !important;
+  }
 `;
 
 const Error = styled.div`
@@ -69,7 +72,7 @@ const Error = styled.div`
   background: transparent !important;
 `;
 
-const FormTrigger = IconWrap.extend`
+const PopupTrigger = IconWrap.extend`
   color: white;
   cursor: pointer;
   display: inline-block;
@@ -80,16 +83,40 @@ const FormTrigger = IconWrap.extend`
   @media (max-width: 1090px) {
     width: 150px;
   }
+  &:hover div {
+    opacity: 1;
+    left: 133px;
+  }
+  @media (max-width: 1090px) {
+    &:hover div {
+      left: 147px;
+    }
+  }
+  @media (max-width: 750px) {
+    &:hover div {
+      left: 50%;
+    }
+  }
 `;
 
-const Popup = styled(popUp)`
-  background: rgba(0, 0, 0, 0.6) !important;
-  border: none !important;
-  box-shadow: 5px 5px 20px 1px black !important;
-  transition: all 500ms !important;
-  width: 500px !important;
-  @media (max-width: 650px) {
-    width: 200px !important;
+const Popup = styled.div`
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px 1px black;
+  cursor: default;
+  left: 1000px;
+  opacity: 0.01;
+  position: absolute;
+  top: 50%;
+  transform: translatey(-50%);
+  transition: all 500ms;
+  width: 500px;
+  @media (max-width: 1090px) {
+    width: 350px;
+  }
+  @media (max-width: 750px) {
+    width: 300px;
+    transform: translate(-30%, -50%);
   }
 `;
 
@@ -102,7 +129,7 @@ const Button = ({ href, icon, label }) => (
   </Link>
 );
 
-const FormField = ({ label, name, type, placeholder, errors, onChange, value }) => (
+const FormField = ({ label, name, type, placeholder, errors, onChange }) => (
   <div className={`required field ${errors[name] ? 'error' : ''}`}>
     <label>{label}</label>
     <input
@@ -110,7 +137,6 @@ const FormField = ({ label, name, type, placeholder, errors, onChange, value }) 
       onChange={onChange}
       placeholder={placeholder}
       type={type}
-      value={value}
     />
   { errors[name] && typeof errors[name] === 'string' &&
     <Error className="ui pointing red basic label">{errors[name]}</Error> }
@@ -205,7 +231,6 @@ class ContactMe extends React.Component {
           label="Name"
           name="name"
           onChange={this.handleChange}
-          value={this.state.name}
           placeholder="Name"
           type="text"
         />
@@ -214,7 +239,6 @@ class ContactMe extends React.Component {
           label="Email"
           name="email"
           onChange={this.handleChange}
-          value={this.state.email}
           placeholder="Email"
           type="email"
         />
@@ -223,7 +247,6 @@ class ContactMe extends React.Component {
           label="Subject"
           name="_subject"
           onChange={this.handleChange}
-          value={this.state._subject}
           placeholder="Name"
           type="text"
         />
@@ -234,7 +257,6 @@ class ContactMe extends React.Component {
             name="message"
             rows="5"
             placeholder="Say some cool stuff here..."
-            value={this.state.message}
           />
         </div>
         <button onClick={this.handleSubmit} className="ui button">Submit!</button>
@@ -246,28 +268,43 @@ class ContactMe extends React.Component {
     );
     return (
       <Container id="contact">
-          <ButtonContainer>
-            <Button label="LinkedIn" href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
-            <Button label="GitHub" href="https://github.com/no-stack-dub-sack" icon="github" />
-            <Button label="freeCodeCamp" href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
-            <Button label="CodePen" href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
-            <Popup
-              basic
-              content={form}
-              flowing
-              hoverable
-              onMount={this.handlePopupClose}
-              position="left center"
-              trigger={
-                <FormTrigger>
-                  <i className="fa fa-envelope fa-2x" />
-                  <span>Email</span>
-                </FormTrigger>}>
+        <ButtonContainer>
+          <Button label="LinkedIn" href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
+          <Button label="GitHub" href="https://github.com/no-stack-dub-sack" icon="github" />
+          <PopupTrigger>
+            <i className="fa fa-envelope fa-2x" />
+            <span>Email</span>
+            <Popup>
+              { form }
             </Popup>
-          </ButtonContainer>
+          </PopupTrigger>
+          <Button label="CodePen" href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
+          <Button label="freeCodeCamp" href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
+        </ButtonContainer>
       </Container>
     );
   }
 }
 
 export default ContactMe;
+
+// <Container id="contact">
+//     <ButtonContainer>
+//       <Button label="LinkedIn" href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
+//       <Button label="GitHub" href="https://github.com/no-stack-dub-sack" icon="github" />
+//       <Button label="freeCodeCamp" href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
+//       <Button label="CodePen" href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
+//       <Popup
+//         basic
+//         content={form}
+//         flowing
+//         hoverable
+//         position="left center"
+//         trigger={
+//           <PopupTrigger>
+//             <i className="fa fa-envelope fa-2x" />
+//             <span>Email</span>
+//           </PopupTrigger>}>
+//       </Popup>
+//     </ButtonContainer>
+// </Container>
