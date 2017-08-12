@@ -157,13 +157,14 @@ class NavBar extends React.Component {
   }
 
   componentDidMount() {
+    this.handleResize();
     window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener("resize", this.handleResize, false);
+    window.addEventListener("resize", this.throttleResizeEvent, false);
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener("resize", this.handleResize, false);
+    window.removeEventListener("resize", this.throttleResizeEvent, false);
   }
 
   handleScroll = (e) => {
@@ -199,27 +200,31 @@ class NavBar extends React.Component {
     ticking = true;
   }
 
-  handleResize = (e) => {
+  throttleResizeEvent = (e) => {
     var resizeTimeout;
     if (!resizeTimeout) {
       resizeTimeout = setTimeout(function() {
         resizeTimeout = null;
-        var viewWidth = window.innerWidth;
-
-        // to prevent smooth scrolling on mobile
-        // see line 230
-        if (viewWidth <= 500 && !this.state.isMobile) {
-          this.setState({ isMobile: true });
-        } else if (viewWidth > 500 && this.state.isMobile) {
-          this.setState({ isMobile: false });
-        }
-
-        // close dropdown if open when resize so not
-        // annoyingly open when resize back down
-        if (viewWidth > 720 && this.state.isDropdownOpen) {
-          this.setState({ isDropdownOpen: false });
-        }
+        this.handleResize();
       }.bind(this), 66);
+    }
+  }
+
+  handleResize = () => {
+    var viewWidth = window.innerWidth;
+
+    // to prevent smooth scrolling on mobile
+    // see line 230
+    if (viewWidth <= 500 && !this.state.isMobile) {
+      this.setState({ isMobile: true });
+    } else if (viewWidth > 500 && this.state.isMobile) {
+      this.setState({ isMobile: false });
+    }
+
+    // close dropdown if open when resize so not
+    // annoyingly open when resize back down
+    if (viewWidth > 720 && this.state.isDropdownOpen) {
+      this.setState({ isDropdownOpen: false });
     }
   }
 
