@@ -2,142 +2,267 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  align-items: center;
-  background: url(http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320463/nyc2_radjzg.jpg) no-repeat center center;
-  background-size: cover;
-  background-attachment: scroll;
-  display: flex;
+  background: #8ACDEA;
   height: 100vh;
-  justify-content: center;
 `;
 
-const InnerContainer = styled.div`
-  max-width: 860px;
-`;
-
-const Name = styled.div`
-  color: White;
-  font-family: Passion One;
-  font-size: 72px;
-  opacity: 0.7;
-  text-align: center;
-  text-shadow: 4px 5px 10px black;
-  @media (max-width: 513px) {
-    margin-bottom: -20px;
-    line-height: 63px;
+const LeftPanel = styled.div`
+  background: #EDE6F2;
+  display: inline-block;
+  float: left;
+  height: 100vh;
+  position: relative;
+  width: 40%;
+  @media (max-width: 920px) {
+    display: none;
   }
-  @media (max-width: 400px) {
-    width: 100%;
+  &:hover {
+    div:first-of-type {
+      left: -100%;
+    }
   }
 `;
 
-const TagLine = styled.div`
-  color: white;
-  font-family: Montserrat;
-  font-size: 24px;
-  margin: 30px auto 10px auto;
-  max-width: 600px;
-  text-align: center;
-  line-height: 26px;
-  text-shadow: 4px 5px 10px black;
-  @media (max-width: 400px) {
-    width: 100%;
+const AboutTextContainer = styled.div`
+  font-size: 18px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  @media (max-width: 1079px) {
+    font-size: 14px;
   }
 `;
 
-const HR = styled.hr`
-  box-shadow: 2px 2px 5px black;
-  margin: 10px 30px 10px 30px;
-  min-width: 800px;
-  @media (max-width: 850px) {
-    min-width: 0;
-    max-width: 700px;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  margin: 20px auto;
-  max-width: 400px;
+const LeftOverlay = styled.div`
+  align-items: center;
+  background: #7e519e;
+  color: #ae7fe4;
   display: flex;
   flex-direction: row;
+  font-family: Montserrat;
+  font-size: 30px;
+  height: 100%;
   justify-content: center;
-  // outline: 1px dotted white;
-  @media (max-width: 400px) {
-    width: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: left .5s;
+  width: 100%;
+  z-index: 2;
+`;
+
+const LeftPanelHide = LeftPanel.extend`
+  display: none;
+  padding: 80px 50px;
+  font-size: 18px;
+  line-height: 20px;
+  @media (max-width: 920px) {
+    display: inline-block;
+    height: 50vh;
+    width: 100vw;
+  }
+  @media (max-width: 690px) {
+    padding: 60px 50px;
+  }
+  @media (max-width: 555px) {
+    padding: 20px 10px;
+    font-size: 13px;
   }
 `;
 
-export const Link = styled.a`
-  color: white;
+const RightPanel = styled.div`
+  background: #8ACDEA;
+  color: #EDE6F2;
   display: inline-block;
+  float: right;
+  font-family: Montserrat;
+  height: 80vh;
+  position: relative;
+  width: 60%;
+  @media (max-width: 920px) {
+    height: 30vh;
+    width: 100vw;
+  }
+  @media (max-width: 600px) {
+    height: 35vh;
+  }
+  @media (max-width: 400px) {
+    height: 40vh;
+  }
+  div {
+    font-size: 20px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 430px;
+    span:first-of-type {
+      line-height: 65px;
+      font-size: 72px;
+    }
+    @media (max-width: 400px) {
+      font-size: 16px;
+      width: auto;
+      span:first-of-type {
+        line-height: 50px;
+        font-size: 60px;
+      }
+    }
+  }
+`;
+
+const IconBlock = styled.div`
+  background: ${props => props.color};
+  display: inline-block;
+  height: 100%;
+  position: relative;
+  transition: all .5s;
+  width: 20%;
+  span {
+    color: ${props => props.color};
+    cursor: pointer;
+    font-family: Montserrat;
+    font-size: 30px;
+    font-weight: bold;
+    left: 50%;
+    opacity: 0.01;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .5s;
+    @media (max-width: 1200px) and (min-width: 921px) {
+      font-size: 20px;
+    }
+    @media (max-width: 725px) {
+      font-size: 20px;
+    }
+    @media (max-width: 490px) {
+      font-size: 16px;
+    }
+  }
+  &:hover {
+    background: ${props => props.overlayColor};
+    span {
+      opacity: 1.0;
+    }
+    a {
+      opacity: 0.01;
+    }
+  }
+  @media (max-width: 490px) {
+    i {
+      font-size: 40px !important;
+    }
+  }
+`;
+
+const Link = styled.a`
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  opacity: 1;
+  position: relative;
   text-decoration: none;
+  transition: all .5s;
+  width: 100%;
   &:hover {
     color: white;
   }
 `;
 
-export const Grow = styled.div`
-  transform: scale(1);
-  transition: 200ms ease-in transform, 200ms linear z-index, 300ms ease box-shadow;
-  z-index: 1;
-  &:hover {
-    box-shadow: 1px 1px 30px 1px black;
-    font-family: monospace !important;
-    transform: scale(1.6);
-    z-index: 2;
+const BlockContainer = styled.div`
+  background: orange;
+  display: inline-block;
+  float: right;
+  height: 20vh;
+  width: 60%;
+  @media (max-width: 920px) {
+    width: 100vw;
+  }
+  @media (max-width: 600px) {
+    height: 15vh;
+  }
+  @media (max-width: 400px) {
+    height: 10vh;
   }
 `;
 
-export const IconWrap = Grow.extend`
-  align-items: center;
-  // background: #337ab7;
-  border-radius: 8px;
-  // border: 1px solid #2e6da4;
-  border: 3px solid white;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  height: 55px;
-  justify-content: center;
-  margin: 3px;
-  position: relative;
-  width: 55px;
-  text-shadow: 2px 2px 10px black;
-  box-shadow: 1px 1px 30px 1px black;
-  &:hover {
-    box-shadow: 5px 5px 60px 1px black;
-  }
+const Highlight = styled.span`
+  color: ${props => props.color};
+  font-weight: bold;
 `;
 
-const Button = ({ href, icon }) => (
+const Icon = ({ href, icon, color }) => (
   <Link href={href} rel="noopener noreferrer" target="_blank">
-    <IconWrap className="shadowHack">
-      <i className={`fa fa-${icon} fa-2x`} aria-hidden="true" />
-    </IconWrap>
+      <i style={{ color: color }}className={`huge ${icon} icon`} aria-hidden="true" />
   </Link>
 );
 
-export const Buttons = () => (
-  <ButtonContainer>
-    <Button href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
-    <Button href="https://github.com/no-stack-dub-sack" icon="github" />
-    <Button href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free-code-camp" />
-    <Button href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
-  </ButtonContainer>
+const AboutText = () => (
+  <div>
+    {'My name is '}<Highlight color="black">{'Peter A. Weinberg'}</Highlight>{`, and
+    I am a `}<Highlight color="red">{'self-taught'}</Highlight>{` JavaScript Developer
+    with an affinity for Open Source Software
+    and learning all things Web. I am also a Core Team member at freeCodeCamp.`}
+    <br /><br />
+    {`About 18 months ago, I had never written a single line of code. Since that
+    time, through `}<Highlight color="#337ab7">{'freeCodeCamp '}</Highlight>{' and various'}
+    <Highlight color="#337ab7"> OSS </Highlight>{` contributions, I have gained a
+    strong foundation in modern web development and a new direction.`}
+    <br /><br />
+    {'I have a '}<Highlight color="#337ab7">{'passion'}</Highlight>{` for learning, problem
+    solving, and creating things that never might have been. I spend every free
+    second I have pursuing this passion. It's all about`}
+    <Highlight color="#337ab7">{' the journey'}</Highlight>{`, and I can't wait to
+    see where this one takes me.`}
+  </div>
 );
 
 const Home = () => (
   <Container id="home">
-    <InnerContainer>
-      <Name>
-        PETER A WEINBERG
-      </Name>
-      <TagLine>
-        Greater NYC Based Web Developer & Open Source Contributor
-      </TagLine>
-      <HR />
-      <Buttons />
-    </InnerContainer>
+    <LeftPanel>
+      <LeftOverlay>The Journey</LeftOverlay>
+      <AboutTextContainer>
+        <AboutText />
+      </AboutTextContainer>
+    </LeftPanel>
+    <RightPanel>
+      <div>
+        <span>Peter A. Weinberg</span><br /><br />
+        <span>Greater NYC Based Web Developer &</span><br />
+        <span>Open Source Contributor</span>
+      </div>
+    </RightPanel>
+    <BlockContainer>
+      <IconBlock overlayColor="#a29aa3" color="#746D75">
+        <Icon color="#a29aa3" href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
+        <span>LinkedIn</span>
+      </IconBlock>
+      <IconBlock overlayColor="#538252" color="#B9FFB7">
+        <Icon color="#538252" href="https://github.com/no-stack-dub-sack" icon="github" />
+        <span>GitHub</span>
+      </IconBlock>
+      <IconBlock overlayColor="#3f3c40" color="#9b959c">
+        <Icon color="#3f3c40" href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free code camp" />
+        <span>fCC</span>
+      </IconBlock>
+      <IconBlock overlayColor="#904d2a" color="#FFC09F">
+        <Icon color="#904d2a" href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
+        <span>CodePen</span>
+      </IconBlock>
+      <IconBlock overlayColor="#602b0e" color="#d67e4f">
+        <Icon color="#602b0e" href="https://codepen.io/collection/DoMvpy/" icon="file text" />
+        <span>Resume</span>
+      </IconBlock>
+    </BlockContainer>
+    <LeftPanelHide>
+      <LeftOverlay>The Journey</LeftOverlay>
+      <AboutText />
+    </LeftPanelHide>
   </Container>
 );
 
