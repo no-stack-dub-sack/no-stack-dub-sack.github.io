@@ -92,11 +92,12 @@ const RightPanel = styled.div`
   }
   div {
     font-size: 20px;
+    line-height: 22px;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 430px;
+    width: 400px;
     span:first-of-type {
       line-height: 65px;
       font-size: 72px;
@@ -146,7 +147,7 @@ const IconBlock = styled.div`
     span {
       opacity: 1.0;
     }
-    a {
+    a:first-of-type {
       opacity: 0.01;
     }
   }
@@ -196,10 +197,17 @@ const Highlight = styled.span`
   font-weight: bold;
 `;
 
-const Icon = ({ href, icon, color }) => (
-  <Link href={href} rel="noopener noreferrer" target="_blank">
-      <i style={{ color: color }}className={`huge ${icon} icon`} aria-hidden="true" />
-  </Link>
+const Icon = ({ color, href, icon, iconColor, label }) => (
+  <IconBlock overlayColor={color} color={iconColor}>
+    <Link href={href} rel="noopener noreferrer" target="_blank">
+        <i style={{ color: color }} className={`huge ${icon} icon`} aria-hidden="true" />
+    </Link>
+    <a href={href} rel="noopener noreferrer" target="_blank">
+      <span>
+        {label}
+      </span>
+    </a>
+  </IconBlock>
 );
 
 const AboutText = () => (
@@ -233,31 +241,45 @@ const Home = () => (
     <RightPanel>
       <div>
         <span>Peter A. Weinberg</span><br /><br />
-        <span>Greater NYC Based Web Developer &</span><br />
-        <span>Open Source Contributor</span>
+        <span>Greater NYC Based Web Developer & Open Source Contributor</span><br />
       </div>
     </RightPanel>
     <BlockContainer>
-      <IconBlock overlayColor="#a29aa3" color="#746D75">
-        <Icon color="#a29aa3" href="https://www.linkedin.com/in/peter-weinberg-b7911a9b" icon="linkedin" />
-        <span>LinkedIn</span>
-      </IconBlock>
-      <IconBlock overlayColor="#538252" color="#B9FFB7">
-        <Icon color="#538252" href="https://github.com/no-stack-dub-sack" icon="github" />
-        <span>GitHub</span>
-      </IconBlock>
-      <IconBlock overlayColor="#3f3c40" color="#9b959c">
-        <Icon color="#3f3c40" href="https://www.freecodecamp.com/no-stack-dub-sack" icon="free code camp" />
-        <span>fCC</span>
-      </IconBlock>
-      <IconBlock overlayColor="#904d2a" color="#FFC09F">
-        <Icon color="#904d2a" href="https://codepen.io/collection/DoMvpy/" icon="codepen" />
-        <span>CodePen</span>
-      </IconBlock>
-      <IconBlock overlayColor="#602b0e" color="#d67e4f">
-        <Icon color="#602b0e" href="https://codepen.io/collection/DoMvpy/" icon="file text" />
-        <span>Resume</span>
-      </IconBlock>
+      <Icon
+        color="#a29aa3"
+        href="https://www.linkedin.com/in/peter-weinberg-b7911a9b"
+        icon="linkedin"
+        iconColor="#746D75"
+        label="LinkedIn"
+      />
+      <Icon
+        color="#538252"
+        href="https://github.com/no-stack-dub-sack"
+        icon="github"
+        iconColor="#B9FFB7"
+        label="GitHub"
+      />
+      <Icon
+        color="#3f3c40"
+        href="https://medium.com/@pweinberg633"
+        icon="medium"
+        iconColor="#9b959c"
+        label="Medium"
+      />
+      <Icon
+        color="#904d2a"
+        href="https://codepen.io/collection/DoMvpy/"
+        icon="codepen"
+        iconColor="#FFC09F"
+        label="CodePen"
+      />
+      <Icon
+        color="#602b0e"
+        href="https://codepen.io/collection/DoMvpy/"
+        icon="file text"
+        iconColor="#d67e4f"
+        label="Resume"
+      />
     </BlockContainer>
     <LeftPanelHide>
       <LeftOverlay>The Journey</LeftOverlay>
