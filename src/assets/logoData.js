@@ -41,5 +41,5 @@ export default [
     src: "http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502332171/git_nwdm2n.svg",
     alt: "git logo",
     label: "Git"
-  },
+  }
 ];
