@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Icons from '../common/Icons';
+import AboutText from '../common/AboutText';
 
 const Container = styled.div`
   background: #8ACDEA;
@@ -40,7 +42,6 @@ const LeftOverlay = styled.div`
   color: #ae7fe4;
   display: flex;
   flex-direction: row;
-  font-family: Montserrat;
   font-size: 30px;
   height: 100%;
   justify-content: center;
@@ -76,7 +77,6 @@ const RightPanel = styled.div`
   color: #EDE6F2;
   display: inline-block;
   float: right;
-  font-family: Montserrat;
   height: 80vh;
   position: relative;
   width: 60%;
@@ -90,7 +90,7 @@ const RightPanel = styled.div`
   @media (max-width: 400px) {
     height: 40vh;
   }
-  div {
+  div:last-of-type {
     font-size: 20px;
     line-height: 22px;
     left: 50%;
@@ -113,123 +113,6 @@ const RightPanel = styled.div`
   }
 `;
 
-const IconBlock = styled.div`
-  background: ${props => props.color};
-  display: inline-block;
-  height: 100%;
-  position: relative;
-  transition: all .5s;
-  width: 20%;
-  span {
-    color: ${props => props.color};
-    cursor: pointer;
-    font-family: Montserrat;
-    font-size: 30px;
-    font-weight: bold;
-    left: 50%;
-    opacity: 0.01;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: all .5s;
-    @media (max-width: 1200px) and (min-width: 921px) {
-      font-size: 20px;
-    }
-    @media (max-width: 725px) {
-      font-size: 20px;
-    }
-    @media (max-width: 490px) {
-      font-size: 16px;
-    }
-  }
-  &:hover {
-    background: ${props => props.overlayColor};
-    span {
-      opacity: 1.0;
-    }
-    a:first-of-type {
-      opacity: 0.01;
-    }
-  }
-  @media (max-width: 490px) {
-    i {
-      font-size: 40px !important;
-    }
-  }
-`;
-
-const Link = styled.a`
-  align-items: center;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  justify-content: center;
-  opacity: 1;
-  position: relative;
-  text-decoration: none;
-  transition: all .5s;
-  width: 100%;
-  &:hover {
-    color: white;
-  }
-`;
-
-const BlockContainer = styled.div`
-  background: orange;
-  display: inline-block;
-  float: right;
-  height: 20vh;
-  width: 60%;
-  @media (max-width: 920px) {
-    width: 100vw;
-  }
-  @media (max-width: 600px) {
-    height: 15vh;
-  }
-  @media (max-width: 400px) {
-    height: 10vh;
-  }
-`;
-
-const Highlight = styled.span`
-  color: ${props => props.color};
-  font-weight: bold;
-`;
-
-const Icon = ({ color, href, icon, iconColor, label }) => (
-  <IconBlock overlayColor={color} color={iconColor}>
-    <Link href={href} rel="noopener noreferrer" target="_blank">
-        <i style={{ color: color }} className={`huge ${icon} icon`} aria-hidden="true" />
-    </Link>
-    <a href={href} rel="noopener noreferrer" target="_blank">
-      <span>
-        {label}
-      </span>
-    </a>
-  </IconBlock>
-);
-
-const AboutText = () => (
-  <div>
-    {'My name is '}<Highlight color="black">{'Peter A. Weinberg'}</Highlight>{`, and
-    I am a `}<Highlight color="red">{'self-taught'}</Highlight>{` JavaScript Developer
-    with an affinity for Open Source Software
-    and learning all things Web. I am also a Core Team member at freeCodeCamp.`}
-    <br /><br />
-    {`About 18 months ago, I had never written a single line of code. Since that
-    time, through `}<Highlight color="#337ab7">{'freeCodeCamp '}</Highlight>{' and various'}
-    <Highlight color="#337ab7"> OSS </Highlight>{` contributions, I have gained a
-    strong foundation in modern web development and a new direction.`}
-    <br /><br />
-    {'I have a '}<Highlight color="#337ab7">{'passion'}</Highlight>{` for learning, problem
-    solving, and creating things that never might have been. I spend every free
-    second I have pursuing this passion. It's all about`}
-    <Highlight color="#337ab7">{' the journey'}</Highlight>{`, and I can't wait to
-    see where this one takes me.`}
-  </div>
-);
-
 const Home = () => (
   <Container id="home">
     <LeftPanel>
@@ -244,43 +127,7 @@ const Home = () => (
         <span>Greater NYC Based Web Developer & Open Source Contributor</span><br />
       </div>
     </RightPanel>
-    <BlockContainer>
-      <Icon
-        color="#a29aa3"
-        href="https://www.linkedin.com/in/peter-weinberg-b7911a9b"
-        icon="linkedin"
-        iconColor="#746D75"
-        label="LinkedIn"
-      />
-      <Icon
-        color="#538252"
-        href="https://github.com/no-stack-dub-sack"
-        icon="github"
-        iconColor="#B9FFB7"
-        label="GitHub"
-      />
-      <Icon
-        color="#3f3c40"
-        href="https://medium.com/@pweinberg633"
-        icon="medium"
-        iconColor="#9b959c"
-        label="Medium"
-      />
-      <Icon
-        color="#904d2a"
-        href="https://codepen.io/collection/DoMvpy/"
-        icon="codepen"
-        iconColor="#FFC09F"
-        label="CodePen"
-      />
-      <Icon
-        color="#602b0e"
-        href="https://codepen.io/collection/DoMvpy/"
-        icon="file text"
-        iconColor="#d67e4f"
-        label="Resume"
-      />
-    </BlockContainer>
+    <Icons />
     <LeftPanelHide>
       <LeftOverlay>The Journey</LeftOverlay>
       <AboutText />

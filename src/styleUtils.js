@@ -34,7 +34,8 @@ export const fadeOutFadeIn2 = keyframes`
   }
 
   100% {
-    transform: opacity: 1;
+    transition: opacity 2s;
+    opacity: 1;
   }
 `;
 

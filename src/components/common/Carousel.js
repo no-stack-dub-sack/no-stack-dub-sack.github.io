@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { CSSTransitionGroup } from 'react-transition-group';
 import carouselData from '../../assets/carouselData';
-import { LeftPanel } from './Projects';
+import { LeftPanel } from '../sections/Projects';
 import {
   absoluteCenter,
   fadeOutFadeIn,
@@ -20,8 +20,6 @@ const CarouselContainer = styled.div`
   // @media (max-width: 400px) {
   //   height: 50%;
   //
-  // test for git
-  // }
 `;
 
 const Carousel = styled.div`
@@ -43,7 +41,6 @@ const Overlay = Carousel.extend`
   .inner-description {
     ${absoluteCenter()}
     color: white;
-    font-family: Montserrat;
     font-size: 16px;
     opacity: 0.01;
     text-align: center;

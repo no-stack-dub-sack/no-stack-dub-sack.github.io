@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Carousel, { darkGreen, lightGreen } from './Carousel';
+import Carousel, { darkGreen } from '../common/Carousel';
 import carouselData from '../../assets/carouselData';
-import logoData from '../../assets/logoData';
+import Logos from '../common/Logos';
 import {
   absoluteCenter,
   carouselReactTransitions,
@@ -112,52 +112,6 @@ const Picker = styled.div`
   }
 `;
 
-const LogosContainer = styled.div`
-  ${absoluteCenter('useMargins')}
-  height: 50px;
-  margin-left: -50%;
-  margin-top: -25px;
-  width: 100%;
-`;
-
-const LogoWrap = styled.div`
-  background: ${props => props.color};
-  display: inline-block;
-  height: 50px;
-  position: relative;
-  width: 14.285%;
-  img,
-  span {
-    ${absoluteCenter()}
-    transition: all 300ms ease-in;
-  }
-  img {
-    max-height: 100px;
-    width: auto;
-  }
-  span {
-    color: ${props => props.textColor};
-    font-family: Montserrat;
-    font-size: 22px;
-    opacity: 0.01;
-  }
-  &:hover img {
-    left: 25%;
-    top: -50%;
-    transform: scale(0.01);
-    + span {
-      opacity: 1;
-    }
-  }
-`;
-
-const Logo = ({ alt, color, label, src, textColor }) => (
-  <LogoWrap color={color} textColor={textColor}>
-    <img src={src} alt={alt} />
-    <span>{label}</span>
-  </LogoWrap>
-);
-
 class Projects extends React.Component {
   constructor(props) {
     super(props);
@@ -185,20 +139,9 @@ class Projects extends React.Component {
   }
 
   render() {
-    const logos = logoData.map(el => (
-      <Logo
-        key={el.color}
-        color={el.color}
-        textColor={el.textColor}
-        src={el.src}
-        alt={el.alt}
-        label={el.label}
-        />
-    ));
     const selectionInitialized = (this.state.category === 'openSource');
-    // console.log(selectionInitialized)
     return (
-      <Container>
+      <Container id="projects">
         <Carousel
           selectionInitialized={selectionInitialized}
           category={this.state.category}
@@ -224,9 +167,7 @@ class Projects extends React.Component {
           </Picker>
         </RightPanel>
         <BottomPanel>
-          <LogosContainer>
-            { logos }
-          </LogosContainer>
+          <Logos />
         </BottomPanel>
       </Container>
     );
@@ -234,51 +175,3 @@ class Projects extends React.Component {
 }
 
 export default Projects;
-
-
-const InfoTrigger = styled.i`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  text-shadow:
-    2px 2px 0 #000,
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
-  -webkit-text-stroke: 1px black;
-  &:hover + div {
-    display: block;
-  }
-`;
-
-const Info = styled.div`
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 5px;
-  color: white;
-  display: none;
-  font-family: Montserrat;
-  max-height: 150px;
-  overflow-y: scroll;
-  padding: 20px;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  word-wrap: break-word;
-  top: 50px;
-  span {
-    color: #c13c1f;
-    font-weight: bold;
-  }
-  a,
-  span.blue {
-    color: #337ab7;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  &:hover {
-    display: block;
-  }
-`;
