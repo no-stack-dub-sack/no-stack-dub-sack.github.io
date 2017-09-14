@@ -19,22 +19,21 @@ export const flexCenter = () => (
 );
 
 export const fadeOutFadeIn = keyframes`
-  from {
-    opacity: 0.01;
-  }
-
-  to {
-    transform: opacity: 1;
-  }
-`;
-
-export const fadeOutFadeIn2 = keyframes`
   0% {
     opacity: 0.01;
   }
 
   100% {
-    transition: opacity 2s;
+    opacity: 1;
+  }
+`;
+
+export const fadeOutFadeIn2 = keyframes`
+  from {
+    opacity: 0.01;
+  }
+
+  to {
     opacity: 1;
   }
 `;

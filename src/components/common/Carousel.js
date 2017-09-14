@@ -88,14 +88,15 @@ const IndicatorContainer = styled.div`
   width: 70%;
   div {
     ${flexCenter()}
-    animation: ${fadeOutFadeIn2} 2s;
+    animation: ${fadeOutFadeIn} 2s;
     height: 100%;
+    transition: 2s;
   }
   &.flip {
     transform: rotateX(180deg);
     transform-style: preserve-3d;
     div {
-      animation: ${fadeOutFadeIn} 2s;
+      animation: ${fadeOutFadeIn2} 1s;
     }
   }
 `;
