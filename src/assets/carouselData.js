@@ -1,4 +1,4 @@
-const CLOUDINARY_URL = 'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/';
+export const CLOUDINARY_URL = 'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/';
 
 export default {
   codePens: {

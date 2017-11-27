@@ -29,6 +29,7 @@ const LogoWrap = styled.div`
   span {
     color: ${props => props.textColor};
     font-size: 22px;
+    font-weight: bold;
     opacity: 0.01;
   }
   &:hover img {
