@@ -113,10 +113,27 @@ const RightPanel = styled.div`
   }
 `;
 
+const Chevron = styled.i`
+  position: absolute;
+  top: 49%;
+  right: 10px;
+  @media (max-width: 920px) {
+    top: 10px;
+    right: 50%;
+  }
+  @media (max-width: 400px) {
+    top: 10px;
+    right: 45%;
+  }
+`;
+
 const Home = () => (
   <Container id="home">
     <LeftPanel>
-      <LeftOverlay>The Journey</LeftOverlay>
+      <LeftOverlay>
+        The Journey
+        <Chevron className="chevron left icon" />
+      </LeftOverlay>
       <AboutTextContainer>
         <AboutText />
       </AboutTextContainer>
@@ -129,7 +146,10 @@ const Home = () => (
     </RightPanel>
     <Icons />
     <LeftPanelHide>
-      <LeftOverlay>The Journey</LeftOverlay>
+      <LeftOverlay>
+        The Journey
+        <Chevron className="chevron down icon" />
+      </LeftOverlay>
       <AboutText />
     </LeftPanelHide>
   </Container>

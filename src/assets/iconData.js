@@ -14,7 +14,7 @@ export default [{
 	},
 	{
 		color: "#3f3c40",
-		href: "https://medium.com/@pweinberg633",
+		href: "https://medium.freecodecamp.org/@pweinberg633",
 		icon: "medium",
 		iconColor: "#9b959c",
 		label: "Medium"
@@ -28,7 +28,7 @@ export default [{
 	},
 	{
 		color: "#602b0e",
-		href: "/resume",
+		href: "https://no-stack-dub-sack.github.io/public/Peter_Weinberg_Resume.pdf",
 		icon: "file text",
 		iconColor: "#d67e4f",
 		label: "Resume"

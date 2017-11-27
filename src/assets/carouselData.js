@@ -40,7 +40,7 @@ export default {
     images: [
       CLOUDINARY_URL + 'v1502320451/FCCAN_ykaig8.gif',
       CLOUDINARY_URL + 'v1502320449/reactChallenges_pnwxun.gif',
-      CLOUDINARY_URL + 'v1511747420/cs-playground-demo_a9zxyz.gif',
+      CLOUDINARY_URL + 'v1511808020/cs-playground-demo_final_vlupf7.gif',
       CLOUDINARY_URL + 'v1502320449/fccTests_arjgge.gif',
       CLOUDINARY_URL + 'v1502320450/arrays_f0oxgc.gif'
     ],
