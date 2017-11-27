@@ -149,12 +149,13 @@ class CarouselComponent extends React.Component {
       direction: 'initialize',
       category: 'openSource',
       intervalId: setInterval(() => this.carouselRight(), 5000),
+      firstLoad: true
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    this.state.intervalId && clearInterval(this.state.intervalId);
     if (nextProps.category !== this.state.category) {
+      this.state.intervalId && clearInterval(this.state.intervalId);
       this.setState({
         category: nextProps.category,
         currentImage: nextProps.firstImgOfCategory,
@@ -207,7 +208,8 @@ class CarouselComponent extends React.Component {
   }
 
   render() {
-    console.log(this.props.selectionInitialized)
+    console.log('section initialized:', this.props.selectionInitialized)
+    console.log('first load:', this.state.firstLoad)
     const { currentImage, category } = this.state;
     const currCategoryObj = carouselData[category];
     const currentIndex = currCategoryObj.images.indexOf(currentImage);

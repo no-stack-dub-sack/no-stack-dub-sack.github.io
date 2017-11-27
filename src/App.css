@@ -2,9 +2,6 @@
  * thanks to callmenick for the css for the awesome hamburger icon!
  * tutorial here: http://callmenick.com/post/animating-css-only-hamburger-menu-icons
 **/
-body {
-  font-family: Montserrat, sans-serif; 
-}
 
 .c-hamburger {
   display: block;

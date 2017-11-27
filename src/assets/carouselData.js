@@ -1,6 +1,7 @@
 export default {
   codePens: {
     images: [
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1511745007/twm88vfLEj_aqhsbq.gif',
       'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/gameOfLife_kgdytl.gif',
       'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320401/ticTacDough_hhndio.gif',
       'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/flatCalc_vnjjnd.gif',
@@ -11,6 +12,7 @@ export default {
       'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/drums_g1wh4y.gif',
     ],
     hrefs: [
+      'https://github.com/no-stack-dub-sack/battleship-cli',
       'https://codepen.io/no_stack_dub_sack/full/bBpWvv',
       'https://codepen.io/no_stack_dub_sack/full/YGNRxO',
       'https://codepen.io/no_stack_dub_sack/full/jrxpKP',
@@ -21,6 +23,7 @@ export default {
       'https://codepen.io/no_stack_dub_sack/full/woQzNW/'
     ],
     captions: [
+      'A NodeJS command-line implementation of the classic 2-player guessing game! Developed with Object Oriented JavaScript and a smart AI that mimics human strategy and gameplay techniques. Check out the NPM package <a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/package/battleship-cli">here</a>.',
       'Conway\'s Game of Life: ReactJS, Sass<br />(Designed for <a target="_blank" rel="noopener noreferrer" href="http://beta.freecodecamp.com/en/challenges/front-end-frameworks-projects/build-a-javascript-calculator">this</a> freeCodeCamp challenge)',
       'Unbeatable Tic-Tac-Dough game: jQuery, Pug, LESS',
       'Flat Design Calculator: ReactJS, Sass<br />(Designed for <a target="_blank" rel="noopener noreferrer" href="http://beta.freecodecamp.com/en/challenges/coding-interview-take-home-projects/build-the-game-of-life">this</a> freeCodeCamp challenge)',
@@ -35,12 +38,14 @@ export default {
     images: [
       'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320451/FCCAN_ykaig8.gif',
       'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320449/reactChallenges_pnwxun.gif',
+      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1511747420/cs-playground-demo_a9zxyz.gif',
       'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320449/fccTests_arjgge.gif',
       'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320450/arrays_f0oxgc.gif'
-          ],
+    ],
     hrefs: [
       'https://fcc-alumni.com',
       'http://hysterical-amusement.surge.sh/',
+      'https://cs-playground-react.surge.sh/',
       'https://codepen.io/collection/npZPmR/',
       'http://beta.freecodecamp.com/en/challenges/basic-data-structures/add-items-to-an-array-with-push-and-unshift'
     ],
@@ -80,6 +85,21 @@ export default {
       Check out the repo at <a href="https://github.com/bonham000/fcc-react-tests-module/"
       target="_blank" rel="noopener noreferrer">https://github.com/bonham000/fcc-react-
       tests-module/</a>`,
+
+      `<span class='blue'>CS-Playground-React:</span> A simple, in-browser JavaScript sandbox
+      for learning and practicing some core Computer Science fundamentals: sorting algorithms
+      and data structures. Learn algorithms like Mergesort, Quicksort, and Heapsort, and data structures
+      like stacks, queues, and binary search trees. The app saves your progress as you code, comes
+      with solutions for when you get stuck, and plenty of resources to help you along the way!
+      You can read an article I wrote about this project for freeCodeCamp's
+      Medium publication <a href="https://goo.gl/UAsnDD" target="_blank" rel="
+      noopener noreferrer">here</a>.
+      <br /><br />
+      <span>Technologies:</span> ReactJS, Redux, React-Redux, CSS3.
+      <br /><br />
+      Check out the repo at <a target="_blank" rel="noopener noreferrer"
+      href="https://github.com/no-stack-dub-sack/cs-playground-react">
+      https://github.com/no-stack-dub-sack/cs-playground-react</a>`,
 
       `<span class='blue'>Frontend Test Suites:</span> This project was also developed
       for the freeCodeCamp curriculum expansion. As more and more students join and

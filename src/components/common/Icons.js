@@ -97,6 +97,7 @@ const IconMap = () => (
   <BlockContainer>
     {IconData.map(icon => (
       <Icon
+        key={icon.href}
         color={icon.color}
         href={icon.href}
         icon={icon.icon}

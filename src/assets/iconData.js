@@ -28,7 +28,7 @@ export default [{
 	},
 	{
 		color: "#602b0e",
-		href: "https://codepen.io/collection/DoMvpy/",
+		href: "/resume",
 		icon: "file text",
 		iconColor: "#d67e4f",
 		label: "Resume"
