@@ -1,15 +1,17 @@
+const CLOUDINARY_URL = 'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/';
+
 export default {
   codePens: {
     images: [
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1511745007/twm88vfLEj_aqhsbq.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/gameOfLife_kgdytl.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320401/ticTacDough_hhndio.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/flatCalc_vnjjnd.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320401/simon_mcvkb1.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/phishCalc_ofdobg.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320403/markdown_tyuddu.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/recipes_hrctci.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320400/drums_g1wh4y.gif',
+      CLOUDINARY_URL + 'v1511745007/twm88vfLEj_aqhsbq.gif',
+      CLOUDINARY_URL + 'v1502320400/gameOfLife_kgdytl.gif',
+      CLOUDINARY_URL + 'v1502320401/ticTacDough_hhndio.gif',
+      CLOUDINARY_URL + 'v1502320400/flatCalc_vnjjnd.gif',
+      CLOUDINARY_URL + 'v1502320401/simon_mcvkb1.gif',
+      CLOUDINARY_URL + 'v1502320400/phishCalc_ofdobg.gif',
+      CLOUDINARY_URL + 'v1502320403/markdown_tyuddu.gif',
+      CLOUDINARY_URL + 'v1502320400/recipes_hrctci.gif',
+      CLOUDINARY_URL + 'v1502320400/drums_g1wh4y.gif',
     ],
     hrefs: [
       'https://github.com/no-stack-dub-sack/battleship-cli',
@@ -36,11 +38,11 @@ export default {
   },
   openSource: {
     images: [
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320451/FCCAN_ykaig8.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320449/reactChallenges_pnwxun.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1511747420/cs-playground-demo_a9zxyz.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320449/fccTests_arjgge.gif',
-      'http://res.cloudinary.com/dmvcjmjkn/image/upload/q_auto/v1502320450/arrays_f0oxgc.gif'
+      CLOUDINARY_URL + 'v1502320451/FCCAN_ykaig8.gif',
+      CLOUDINARY_URL + 'v1502320449/reactChallenges_pnwxun.gif',
+      CLOUDINARY_URL + 'v1511747420/cs-playground-demo_a9zxyz.gif',
+      CLOUDINARY_URL + 'v1502320449/fccTests_arjgge.gif',
+      CLOUDINARY_URL + 'v1502320450/arrays_f0oxgc.gif'
     ],
     hrefs: [
       'https://fcc-alumni.com',
