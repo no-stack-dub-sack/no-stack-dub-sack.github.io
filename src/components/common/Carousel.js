@@ -208,8 +208,6 @@ class CarouselComponent extends React.Component {
   }
 
   render() {
-    console.log('section initialized:', this.props.selectionInitialized)
-    console.log('first load:', this.state.firstLoad)
     const { currentImage, category } = this.state;
     const currCategoryObj = carouselData[category];
     const currentIndex = currCategoryObj.images.indexOf(currentImage);

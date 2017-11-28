@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './components/sections/Home';
 import Projects from './components/sections/Projects';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const AppContainer = styled.div`
   position: relative;
@@ -54,6 +55,12 @@ class App extends Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
+    if (process.env.NODE_ENV === 'production') {
+      console.log('regestering count')
+      axios.post('https://hit-count-server.herokuapp.com/register-count')
+      .then(() => null)
+      .catch(() => null);
+    }
   }
 
   componentWillUnmount() {
