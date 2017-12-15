@@ -28,7 +28,7 @@ export default [{
 	},
 	{
 		color: "#602b0e",
-		href: "https://no-stack-dub-sack.github.io/public/Peter_Weinberg_Resume.pdf",
+		href: "#",
 		icon: "file text",
 		iconColor: "#d67e4f",
 		label: "Resume"
